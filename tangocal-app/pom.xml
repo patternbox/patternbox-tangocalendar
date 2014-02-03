@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>com.patternbox.tangocalendar</groupId>
+	<artifactId>tangocal</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>tangocal-app</artifactId>
+  <packaging>ear</packaging>
+  <dependencies>
+
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-location</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>ejb</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-event</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>ejb</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-web</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>war</type>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+          <displayName>Tango-Calendar</displayName>
+          <version>1.4</version>
+          <modules>
+
+            <webModule>
+              <groupId>com.patternbox.tangocalendar</groupId>
+              <artifactId>tangocal-web</artifactId>
+              <contextRoot>/tangocalendar</contextRoot>
+            </webModule>
+
+          </modules>
+        </configuration>
+      </plugin>
+      <!--plugin>
+          <groupId>org.jboss.as.plugins</groupId>
+          <artifactId>jboss-as-maven-plugin</artifactId>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>deploy</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin-->
+    </plugins>
+  </build>
+
+</project>

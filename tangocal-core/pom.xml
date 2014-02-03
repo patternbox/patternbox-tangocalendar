@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.patternbox.tangocalendar</groupId>
-		<artifactId>tangocal-parent</artifactId>
+		<artifactId>tangocal</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>tangocal-core</artifactId>

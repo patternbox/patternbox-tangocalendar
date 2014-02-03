@@ -41,5 +41,8 @@ public interface Entity<T, I> {
 	 */
 	boolean sameIdentityAs(T other);
 
+	/**
+	 * Returns the entity identifier.
+	 */
 	I getIdentifer();
 }
