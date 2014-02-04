@@ -23,19 +23,22 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.location.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * The tango event location entity.
+ * 
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
 @javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
+public class Location implements Entity<Location, Long> {
 
 	@Id
 	@GeneratedValue
@@ -44,15 +47,14 @@ public class Teacher implements Entity<Teacher, Long> {
 	@Column(unique = true, nullable = false)
 	private String name;
 
-	private String phone;
-
-	private String email;
+	@Embedded
+	private Address address;
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameIdentityAs(Teacher other) {
+	public boolean sameIdentityAs(Location other) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -62,7 +64,6 @@ public class Teacher implements Entity<Teacher, Long> {
 	 */
 	@Override
 	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+		return identifier;
 	}
 }

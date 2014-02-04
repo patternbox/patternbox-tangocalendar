@@ -27,11 +27,16 @@ package com.patternbox.tangocalendar.event.domain;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
+@Entity
 public class TemplateEvent extends AbstractEvent {
 
+	@Embedded
 	private Recurrence recurrence;
 
 	/**

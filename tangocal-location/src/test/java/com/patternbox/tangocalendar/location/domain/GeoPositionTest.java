@@ -23,46 +23,38 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.location.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import static org.junit.Assert.assertEquals;
 
-import com.patternbox.tangocalendar.types.Entity;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
-
-	@Id
-	@GeneratedValue
-	private Long identifier;
-
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String phone;
-
-	private String email;
+public class GeoPositionTest {
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @throws java.lang.Exception
 	 */
-	@Override
-	public boolean sameIdentityAs(Teacher other) {
-		// TODO Auto-generated method stub
-		return false;
+	@Before
+	public void setUp() throws Exception {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * Test method for
+	 * {@link com.patternbox.tangocalendar.location.domain.GeoPosition#calcDistanceInKm(com.patternbox.tangocalendar.location.domain.GeoPosition)}
+	 * .
 	 */
-	@Override
-	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+	@Test
+	public void testGetDistanceInKm() {
+		GeoPosition berlin = new GeoPosition(52.5243700, 13.4105300);
+		GeoPosition hamburg = new GeoPosition(53.5500000, 10.0000000);
+		double distanceBH = berlin.calcDistanceInKm(hamburg);
+		double distanceHB = hamburg.calcDistanceInKm(berlin);
+		assertEquals("Same Distance: Berlin, Hamburg", distanceBH, distanceHB, 0.01);
+		assertEquals("Distance: Berlin-Hamburg", 255.64, distanceBH, 1.0);
+		assertEquals("Distance: Hamburg-Berlin", 255.64, distanceHB, 1.0);
 	}
 }

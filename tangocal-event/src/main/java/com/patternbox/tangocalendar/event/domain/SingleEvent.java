@@ -25,14 +25,20 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 /**
  * Entity of a single tango event.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
+@Entity
 public class SingleEvent extends AbstractEvent {
 
+	@ManyToOne
 	private TemplateEvent template;
 
+	@ManyToOne
 	private Teacher teacher;
 }

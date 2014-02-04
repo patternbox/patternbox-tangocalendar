@@ -23,46 +23,30 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.location.logic;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.patternbox.tangocalendar.types.Entity;
+import javax.inject.Inject;
+
+import com.patternbox.tangocalendar.annotations.Service;
+import com.patternbox.tangocalendar.location.domain.Location;
 
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-@javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
+@Service
+public class LocationService {
 
-	@Id
-	@GeneratedValue
-	private Long identifier;
+	@Inject
+	private LocationRepository repository;
 
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String phone;
-
-	private String email;
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
-	 */
-	@Override
-	public boolean sameIdentityAs(Teacher other) {
-		// TODO Auto-generated method stub
-		return false;
+	List<Location> getLocations() {
+		return new ArrayList<Location>();
 	}
 
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
-	 */
-	@Override
-	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+	Location getLocation(Long identifier) {
+		return repository.getLocation(identifier);
 	}
 }

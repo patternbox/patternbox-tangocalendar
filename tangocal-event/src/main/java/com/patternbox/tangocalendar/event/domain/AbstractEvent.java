@@ -25,18 +25,52 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+
 import com.patternbox.tangocalendar.location.domain.Location;
+import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * An abstract tango event to define all common event staff.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-public abstract class AbstractEvent {
+@javax.persistence.Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 
+	@Id
+	@GeneratedValue
+	private Long identifier;
+
+	@Column(unique = true, nullable = false)
+	private String eventName;
+
+	@ManyToOne
 	private Location location;
 
 	private String eventType;
 
-	private String eventName;
+	/**
+	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 */
+	@Override
+	public boolean sameIdentityAs(AbstractEvent other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 */
+	@Override
+	public Long getIdentifer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

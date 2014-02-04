@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,46 +23,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import com.patternbox.tangocalendar.types.Entity;
-
 /**
+ * CDI producer definitions.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
-
-	@Id
-	@GeneratedValue
-	private Long identifier;
-
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String phone;
-
-	private String email;
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
-	 */
-	@Override
-	public boolean sameIdentityAs(Teacher other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
-	 */
-	@Override
-	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-}
+package com.patternbox.tangocalendar.producer;

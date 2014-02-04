@@ -27,6 +27,7 @@ package com.patternbox.tangocalendar.event.logic;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.patternbox.tangocalendar.annotations.Service;
@@ -37,6 +38,7 @@ import com.patternbox.tangocalendar.event.domain.TemplateEvent;
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @Service
+@Stateless
 public class EventService {
 
 	@Inject

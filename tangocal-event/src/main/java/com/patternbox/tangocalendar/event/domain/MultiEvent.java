@@ -29,13 +29,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
 /**
  * Aggregates a bunch of {@link SingleEvent}s as multiple event.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
+@Entity
 public class MultiEvent extends AbstractEvent {
 
+	@OneToMany
 	private final List<SingleEvent> events = new ArrayList<SingleEvent>();
 
 	/**

@@ -5,7 +5,11 @@
   <persistence-unit name="tangocal">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-    <class>sample.MyEntity2</class>
+    <class>com.patternbox.tangocalendar.location.domain.Location</class>
+    <class>com.patternbox.tangocalendar.event.domain.TemplateEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.MultiEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.SingleEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.Teacher</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
       <property name="hibernate.max_fetch_depth" value="3" />

@@ -23,46 +23,29 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.producer;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.util.logging.Logger;
 
-import com.patternbox.tangocalendar.types.Entity;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
+ * CDI based JDK logger producer.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
-
-	@Id
-	@GeneratedValue
-	private Long identifier;
-
-	@Column(unique = true, nullable = false)
-	private String name;
-
-	private String phone;
-
-	private String email;
+public class LoggerProducer {
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * Produces and returns JDK logger instance.
+	 * 
+	 * @param injectionPoint
+	 *          the injection point to detect the required class name
+	 * @return JDK logger
 	 */
-	@Override
-	public boolean sameIdentityAs(Teacher other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
-	 */
-	@Override
-	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+	@Produces
+	Logger produceLogger(InjectionPoint injectionPoint) {
+		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}
 }
