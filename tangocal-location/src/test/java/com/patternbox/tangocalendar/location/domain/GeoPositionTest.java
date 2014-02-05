@@ -31,6 +31,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * Unit test for {@link com.patternbox.tangocalendar.location.domain.GeoPosition}
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 public class GeoPositionTest {

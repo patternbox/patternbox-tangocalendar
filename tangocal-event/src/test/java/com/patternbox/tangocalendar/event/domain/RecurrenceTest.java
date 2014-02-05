@@ -36,6 +36,8 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.patternbox.tangocalendar.event.domain.Recurrence;
+
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
