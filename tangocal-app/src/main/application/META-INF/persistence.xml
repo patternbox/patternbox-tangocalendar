@@ -6,6 +6,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
     <class>com.patternbox.tangocalendar.location.domain.Location</class>
+    <class>com.patternbox.tangocalendar.event.domain.TemplateHeader</class>
     <class>com.patternbox.tangocalendar.event.domain.TemplateEvent</class>
     <class>com.patternbox.tangocalendar.event.domain.MultiEvent</class>
     <class>com.patternbox.tangocalendar.event.domain.SingleEvent</class>

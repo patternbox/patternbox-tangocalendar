@@ -70,7 +70,20 @@ public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 	 */
 	@Override
 	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+		return identifier;
+	}
+
+	/**
+	 * @return the eventName
+	 */
+	public String getEventName() {
+		return eventName;
+	}
+
+	/**
+	 * @return the location
+	 */
+	public Location getLocation() {
+		return location;
 	}
 }

@@ -28,25 +28,66 @@ package com.patternbox.tangocalendar.location.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.patternbox.tangocalendar.annotations.Service;
 import com.patternbox.tangocalendar.location.domain.Location;
 
 /**
+ * DDD service to access <strong>location management</strong> functionality. It annotated as
+ * state-less EJB to start a new transaction.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
 @Service
+@Stateless
 public class LocationService {
 
 	@Inject
 	private LocationRepository repository;
 
+	/**
+	 * Store new location instance into database.
+	 * 
+	 * @param location
+	 *          the location to store
+	 */
+	public Location storeLocation(Location location) {
+		repository.storeLocation(location);
+		return location;
+	}
+
 	List<Location> getLocations() {
 		return new ArrayList<Location>();
 	}
 
+	/**
+	 * Returns a location for a given identifier.
+	 * 
+	 * @param identifier
+	 *          the location identifier
+	 * @return the location instance
+	 */
 	Location getLocation(Long identifier) {
 		return repository.getLocation(identifier);
+	}
+
+	/**
+	 * Returns a location for a given location name.
+	 * 
+	 * @param name
+	 *          the location name
+	 * @return the location instance
+	 */
+	public Location getLocation(String name) {
+		return repository.getLocation(name);
+	}
+
+	/**
+	 * Returns a list of location names.
+	 */
+	public List<String> getLocationNames() {
+		return repository.getLocationNames();
 	}
 }

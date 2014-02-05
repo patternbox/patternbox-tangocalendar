@@ -43,8 +43,8 @@ import com.patternbox.tangocalendar.types.ValueObject;
 @SuppressWarnings("serial")
 public class Recurrence implements ValueObject<Recurrence> {
 
-	public enum Weekday {
-		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+	public enum DayOfWeek {
+		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
 	}
 
 	public enum WeekSelection {
@@ -60,7 +60,7 @@ public class Recurrence implements ValueObject<Recurrence> {
 	private Date endDate;
 
 	@Enumerated(EnumType.STRING)
-	private Weekday weekday;
+	private DayOfWeek dayOfWeek;
 
 	@Enumerated(EnumType.STRING)
 	private WeekSelection weekSelection;
@@ -78,11 +78,11 @@ public class Recurrence implements ValueObject<Recurrence> {
 	/**
 	 * Parameterized constructor.
 	 */
-	public Recurrence(Date startDate, Date endDate, Weekday weekday, WeekSelection weekSelection,
+	public Recurrence(Date startDate, Date endDate, DayOfWeek weekday, WeekSelection weekSelection,
 			Period period) {
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.weekday = weekday;
+		this.dayOfWeek = weekday;
 		this.weekSelection = weekSelection;
 		this.period = period;
 	}

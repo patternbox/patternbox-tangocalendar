@@ -62,7 +62,6 @@ public class Teacher implements Entity<Teacher, Long> {
 	 */
 	@Override
 	public Long getIdentifer() {
-		// TODO Auto-generated method stub
-		return null;
+		return identifier;
 	}
 }

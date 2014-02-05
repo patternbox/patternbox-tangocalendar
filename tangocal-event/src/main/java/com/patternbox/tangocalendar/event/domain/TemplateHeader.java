@@ -23,74 +23,41 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.domain;
+package com.patternbox.tangocalendar.event.domain;
 
-import static com.patternbox.tangocalendar.location.domain.Location.COL_NAME;
-import static com.patternbox.tangocalendar.location.domain.Location.ORDER_SUFFIX;
-import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_BY_NAME;
-import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_NAMES;
-import static com.patternbox.tangocalendar.location.domain.Location.SELECT_PREFIX;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
- * The tango event location entity.
- * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @javax.persistence.Entity
-@NamedQueries({
-		@NamedQuery(name = QRY_LOCATION_BY_NAME, query = SELECT_PREFIX + "WHERE l.name = :" + COL_NAME),
-		@NamedQuery(name = QRY_LOCATION_NAMES, query = "SELECT l.name FROM Location l " + ORDER_SUFFIX) })
-public class Location implements Entity<Location, Long> {
-
-	public static final String QRY_LOCATION_NAMES = "QryLocationNames";
-
-	public static final String QRY_LOCATION_BY_NAME = "QryLocationByName";
-
-	public static final String COL_NAME = "name";
-
-	static final String SELECT_PREFIX = "SELECT l FROM Location l ";
-
-	static final String ORDER_SUFFIX = " ORDER BY l.name";
+public class TemplateHeader implements Entity<TemplateHeader, Long> {
 
 	@Id
 	@GeneratedValue
 	private Long identifier;
 
-	@Column(unique = true, nullable = false)
-	private String name;
-
 	@Embedded
-	private Address address;
+	private Recurrence recurrence;
 
-	/**
-	 * Default constructor to satisfy JPA.
-	 */
-	public Location() {
-		super();
-	}
-
-	/**
-	 * Parameterized constructor.
-	 */
-	public Location(String name, Address address) {
-		this.name = name;
-		this.address = address;
-	}
+	// @Column(unique = true, nullable = false)
+	// private String name;
+	@OneToMany
+	private final List<TemplateEvent> templates = new ArrayList<TemplateEvent>();
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameIdentityAs(Location other) {
+	public boolean sameIdentityAs(TemplateHeader other) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -101,5 +68,35 @@ public class Location implements Entity<Location, Long> {
 	@Override
 	public Long getIdentifer() {
 		return identifier;
+	}
+
+	/**
+	 * Compose name from template events.
+	 * 
+	 * @return the template header name
+	 */
+	public String getName() {
+		final String delimiter = " / ";
+		StringBuilder result = new StringBuilder();
+		for (TemplateEvent template : templates) {
+			result.append(template.getEventName());
+			result.append(delimiter);
+		}
+		// post processing
+		if (result.length() > delimiter.length()) {
+			result.setLength(result.length() - delimiter.length());
+		} else {
+			result.append("???");
+		}
+		return result.toString();
+	}
+
+	/**
+	 * Applies the template definition and returns a list of created events.
+	 * 
+	 * @return a list of events
+	 */
+	public List<SingleEvent> applyTemplate() {
+		return null;
 	}
 }

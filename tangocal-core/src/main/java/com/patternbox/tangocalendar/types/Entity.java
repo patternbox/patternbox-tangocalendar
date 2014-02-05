@@ -42,7 +42,7 @@ public interface Entity<T, I> {
 	boolean sameIdentityAs(T other);
 
 	/**
-	 * Returns the entity identifier.
+	 * Returns the DDD entity identifier.
 	 */
 	I getIdentifer();
 }

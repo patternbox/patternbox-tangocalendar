@@ -23,19 +23,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.logic;
-
-import java.util.Date;
-
-import com.patternbox.tangocalendar.event.domain.Recurrence;
-import com.patternbox.tangocalendar.event.domain.Recurrence.DayOfWeek;
-
 /**
+ * Utility and helper classes.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public class RecurrenceFactory {
-
-	public Recurrence createWeekly(Date startDate, Date endDate, DayOfWeek weekday) {
-		return new Recurrence(startDate, endDate, weekday, null, null);
-	}
-}
+package com.patternbox.tangocalendar.event.utils;

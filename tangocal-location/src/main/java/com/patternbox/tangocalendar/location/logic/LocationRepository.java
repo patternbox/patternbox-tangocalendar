@@ -25,6 +25,16 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.logic;
 
+import static com.patternbox.tangocalendar.location.domain.Location.COL_NAME;
+import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_BY_NAME;
+import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_NAMES;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import com.patternbox.tangocalendar.annotations.Repository;
 import com.patternbox.tangocalendar.location.domain.Location;
 
@@ -34,11 +44,47 @@ import com.patternbox.tangocalendar.location.domain.Location;
 @Repository
 public class LocationRepository {
 
+	@Inject
+	private EntityManager em;
+
+	/**
+	 * Store new location instance into database.
+	 * 
+	 * @param location
+	 *          the location to store
+	 */
 	public void storeLocation(Location location) {
-		// TODO Auto-generated method stub
+		em.persist(location);
 	}
 
+	/**
+	 * Returns a location for a given identifier.
+	 * 
+	 * @param identifier
+	 *          the location identifier
+	 * @return the location instance
+	 */
 	public Location getLocation(Long identifier) {
-		return null;
+		return em.find(Location.class, identifier);
+	}
+
+	/**
+	 * Returns a location for a given location name.
+	 * 
+	 * @param name
+	 *          the location name
+	 * @return the location instance
+	 */
+	public Location getLocation(String name) {
+		TypedQuery<Location> query = em.createNamedQuery(QRY_LOCATION_BY_NAME, Location.class);
+		query.setParameter(COL_NAME, name);
+		return query.getSingleResult();
+	}
+
+	/**
+	 * Returns a list of location names.
+	 */
+	public List<String> getLocationNames() {
+		return em.createNamedQuery(QRY_LOCATION_NAMES, String.class).getResultList();
 	}
 }
