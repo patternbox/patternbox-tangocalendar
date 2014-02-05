@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -25,47 +25,9 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import com.patternbox.tangocalendar.types.ValueObject;
-
 /**
- * Event category as DDD value object.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Entity
-@SuppressWarnings("serial")
-public class EventCategory implements ValueObject<EventCategory> {
-
-	@Id
-	private String code;
-
-	@Column(nullable = false, updatable = false)
-	private String label;
-
-	/**
-	 * Default constructor to satisfy JPA.
-	 */
-	public EventCategory() {
-		super();
-	}
-
-	/**
-	 * Parameterized constructor.
-	 */
-	public EventCategory(String code, String label) {
-		this.code = code;
-		this.label = label;
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
-	 */
-	@Override
-	public boolean sameValueAs(EventCategory other) {
-		return code.equalsIgnoreCase(other.code);
-	}
+public enum EventType {
+	Practica, Milonga, Workshop, DanceClass, Festival, Voyage;
 }

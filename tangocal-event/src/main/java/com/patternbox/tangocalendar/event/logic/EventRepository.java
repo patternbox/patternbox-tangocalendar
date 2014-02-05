@@ -34,7 +34,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.event.domain.TemplateEvent;
+import com.patternbox.tangocalendar.event.domain.EventTemplateItem;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -45,8 +45,8 @@ public class EventRepository {
 	@Inject
 	private EntityManager em;
 
-	public List<TemplateEvent> getTemplates() {
-		return new ArrayList<TemplateEvent>();
+	public List<EventTemplateItem> getTemplates() {
+		return new ArrayList<EventTemplateItem>();
 	}
 
 	public Map<String, String> getEventCategories() {

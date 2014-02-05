@@ -25,7 +25,11 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import static com.patternbox.tangocalendar.event.domain.EventTemplateItem.FK_EVENT_TEMPLATE;
+import static com.patternbox.tangocalendar.event.domain.Teacher.FK_TEACHER;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -36,9 +40,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class SingleEvent extends AbstractEvent {
 
-	@ManyToOne
-	private TemplateEvent template;
+	static final String FK_PARENT_EVENT = "ParentEvent_FK";
 
 	@ManyToOne
+	@JoinColumn(name = FK_PARENT_EVENT)
+	private MultiEvent parentEvent;
+
+	@ManyToOne
+	@JoinColumn(name = FK_EVENT_TEMPLATE)
+	EventTemplate template;
+
+	@ManyToOne
+	@JoinColumn(name = FK_TEACHER)
 	private Teacher teacher;
 }

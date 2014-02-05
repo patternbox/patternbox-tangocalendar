@@ -57,6 +57,8 @@ public class Location implements Entity<Location, Long> {
 
 	public static final String COL_NAME = "name";
 
+	public static final String FK_LOCATION = "Location_FK";
+
 	static final String SELECT_PREFIX = "SELECT l FROM Location l ";
 
 	static final String ORDER_SUFFIX = " ORDER BY l.name";

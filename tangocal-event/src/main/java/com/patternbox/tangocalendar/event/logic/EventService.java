@@ -31,8 +31,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.patternbox.tangocalendar.annotations.Service;
-import com.patternbox.tangocalendar.event.domain.AbstractEvent;
-import com.patternbox.tangocalendar.event.domain.TemplateEvent;
+import com.patternbox.tangocalendar.event.domain.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.EventTemplate;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -44,13 +44,16 @@ public class EventService {
 	@Inject
 	private EventRepository eventRepository;
 
+	@Inject
+	private TemplateRepository templateRepository;
+
 	public void applyTemplates() {
-		for (TemplateEvent template : eventRepository.getTemplates()) {
+		for (EventTemplate template : templateRepository.getTemplates()) {
 			applyTemplate(template);
 		}
 	}
 
-	public List<AbstractEvent> applyTemplate(TemplateEvent template) {
+	public List<SingleEvent> applyTemplate(EventTemplate template) {
 		return template.applyTemplate();
 	}
 }

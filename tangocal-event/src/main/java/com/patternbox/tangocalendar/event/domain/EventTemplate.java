@@ -25,21 +25,27 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import static com.patternbox.tangocalendar.event.domain.EventTemplateItem.FK_EVENT_TEMPLATE;
+import static com.patternbox.tangocalendar.location.domain.Location.FK_LOCATION;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.patternbox.tangocalendar.location.domain.Location;
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @javax.persistence.Entity
-public class TemplateHeader implements Entity<TemplateHeader, Long> {
+public class EventTemplate implements Entity<EventTemplate, Long> {
 
 	@Id
 	@GeneratedValue
@@ -48,16 +54,19 @@ public class TemplateHeader implements Entity<TemplateHeader, Long> {
 	@Embedded
 	private Recurrence recurrence;
 
-	// @Column(unique = true, nullable = false)
-	// private String name;
+	@ManyToOne
+	@JoinColumn(name = FK_LOCATION)
+	private Location location;
+
 	@OneToMany
-	private final List<TemplateEvent> templates = new ArrayList<TemplateEvent>();
+	@JoinColumn(name = FK_EVENT_TEMPLATE)
+	private final List<EventTemplateItem> templateItems = new ArrayList<EventTemplateItem>();
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameIdentityAs(TemplateHeader other) {
+	public boolean sameIdentityAs(EventTemplate other) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -78,7 +87,7 @@ public class TemplateHeader implements Entity<TemplateHeader, Long> {
 	public String getName() {
 		final String delimiter = " / ";
 		StringBuilder result = new StringBuilder();
-		for (TemplateEvent template : templates) {
+		for (EventTemplateItem template : templateItems) {
 			result.append(template.getEventName());
 			result.append(delimiter);
 		}

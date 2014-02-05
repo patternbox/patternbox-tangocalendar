@@ -25,47 +25,68 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import static com.patternbox.tangocalendar.event.domain.Teacher.FK_TEACHER;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import com.patternbox.tangocalendar.types.Entity;
 
 /**
- * Event category as DDD value object.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Entity
-@SuppressWarnings("serial")
-public class EventCategory implements ValueObject<EventCategory> {
+@javax.persistence.Entity
+public class EventTemplateItem implements Entity<EventTemplateItem, Long> {
+
+	static final String FK_EVENT_TEMPLATE = "EventTemplate_FK";
 
 	@Id
-	private String code;
+	@GeneratedValue
+	private Long identifier;
 
-	@Column(nullable = false, updatable = false)
-	private String label;
+	@NotNull
+	private String eventName;
 
-	/**
-	 * Default constructor to satisfy JPA.
-	 */
-	public EventCategory() {
-		super();
-	}
+	@ManyToOne
+	@JoinColumn(name = FK_EVENT_TEMPLATE)
+	EventTemplate template;
 
-	/**
-	 * Parameterized constructor.
-	 */
-	public EventCategory(String code, String label) {
-		this.code = code;
-		this.label = label;
-	}
+	@ManyToOne
+	@JoinColumn(name = FK_TEACHER)
+	private Teacher teacher;
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameValueAs(EventCategory other) {
-		return code.equalsIgnoreCase(other.code);
+	public boolean sameIdentityAs(EventTemplateItem other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 */
+	@Override
+	public Long getIdentifer() {
+		return identifier;
+	}
+
+	/**
+	 * @return the eventName
+	 */
+	public String getEventName() {
+		return eventName;
+	}
+
+	/**
+	 * @param eventName
+	 *          the eventName to set
+	 */
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 }

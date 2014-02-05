@@ -23,28 +23,27 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.event.logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
+import com.patternbox.tangocalendar.annotations.Repository;
+import com.patternbox.tangocalendar.event.domain.EventTemplate;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Entity
-public class TemplateEvent extends AbstractEvent {
+@Repository
+public class TemplateRepository {
 
-	@Embedded
-	private Recurrence recurrence;
+	@Inject
+	private EntityManager em;
 
-	/**
-	 * Applies the template definition and returns a list of created events.
-	 * 
-	 * @return a list of events
-	 */
-	public List<AbstractEvent> applyTemplate() {
-		return null;
+	public List<EventTemplate> getTemplates() {
+		return new ArrayList<EventTemplate>();
 	}
 }

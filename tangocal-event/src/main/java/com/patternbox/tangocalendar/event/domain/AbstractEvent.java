@@ -25,11 +25,16 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import static com.patternbox.tangocalendar.location.domain.Location.FK_LOCATION;
+
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -52,14 +57,18 @@ public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 	@Column(unique = true, nullable = false)
 	private String eventName;
 
-	@ManyToOne
-	private Location location;
-
 	/**
 	 * Uses {@link EventCategory} as lookup.
 	 */
 	@NotNull
 	private String categoryCode;
+
+	@Enumerated(EnumType.STRING)
+	private EventType eventType;
+
+	@ManyToOne
+	@JoinColumn(name = FK_LOCATION)
+	private Location location;
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)

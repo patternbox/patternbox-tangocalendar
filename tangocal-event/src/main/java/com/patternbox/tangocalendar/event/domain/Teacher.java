@@ -37,6 +37,8 @@ import com.patternbox.tangocalendar.types.Entity;
 @javax.persistence.Entity
 public class Teacher implements Entity<Teacher, Long> {
 
+	static final String FK_TEACHER = "Teacher_FK";
+
 	@Id
 	@GeneratedValue
 	private Long identifier;

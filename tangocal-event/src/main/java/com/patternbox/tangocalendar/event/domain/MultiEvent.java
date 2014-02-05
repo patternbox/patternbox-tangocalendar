@@ -25,11 +25,14 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain;
 
+import static com.patternbox.tangocalendar.event.domain.SingleEvent.FK_PARENT_EVENT;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -41,6 +44,7 @@ import javax.persistence.OneToMany;
 public class MultiEvent extends AbstractEvent {
 
 	@OneToMany
+	@JoinColumn(name = FK_PARENT_EVENT)
 	private final List<SingleEvent> events = new ArrayList<SingleEvent>();
 
 	/**
