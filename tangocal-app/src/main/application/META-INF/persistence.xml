@@ -10,6 +10,7 @@
     <class>com.patternbox.tangocalendar.event.domain.TemplateEvent</class>
     <class>com.patternbox.tangocalendar.event.domain.MultiEvent</class>
     <class>com.patternbox.tangocalendar.event.domain.SingleEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.EventCategory</class>
     <class>com.patternbox.tangocalendar.event.domain.Teacher</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />

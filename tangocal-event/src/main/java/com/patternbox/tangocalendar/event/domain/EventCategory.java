@@ -26,69 +26,46 @@ SUCH DAMAGE.
 package com.patternbox.tangocalendar.event.domain;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
-import com.patternbox.tangocalendar.location.domain.Location;
-import com.patternbox.tangocalendar.types.Entity;
+import com.patternbox.tangocalendar.types.ValueObject;
 
 /**
- * An abstract tango event to define all common event staff.
+ * Event category DDD value object.
  * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@javax.persistence.Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
+@Entity
+@SuppressWarnings("serial")
+public class EventCategory implements ValueObject<EventCategory> {
 
 	@Id
-	@GeneratedValue
-	private Long identifier;
+	private String code;
 
-	@Column(unique = true, nullable = false)
-	private String eventName;
-
-	@ManyToOne
-	private Location location;
+	@Column(nullable = false, updatable = false)
+	private String label;
 
 	/**
-	 * Uses {@link EventCategory} as lookup.
+	 * Default constructor to satisfy JPA.
 	 */
-	@NotNull
-	private String categoryCode;
+	public EventCategory() {
+		super();
+	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * Parameterized constructor.
+	 */
+	public EventCategory(String code, String label) {
+		this.code = code;
+		this.label = label;
+	}
+
+	/**
+	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameIdentityAs(AbstractEvent other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
-	 */
-	@Override
-	public Long getIdentifer() {
-		return identifier;
-	}
-
-	/**
-	 * @return the eventName
-	 */
-	public String getEventName() {
-		return eventName;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public Location getLocation() {
-		return location;
+	public boolean sameValueAs(EventCategory other) {
+		return code.equalsIgnoreCase(other.code);
 	}
 }
