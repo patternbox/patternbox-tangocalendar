@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <!-- include file="com/example/db/changelog/db.changelog-1.0.xml"/> 
+  <include file="com/example/db/changelog/db.changelog-1.1.xml"/> 
+  <include file="com/example/db/changelog/db.changelog-2.0.xml"/--> 
+
+  <changeSet author="liquibase-docs" id="sql-example">
+    <sql dbms="h2, mysql"
+            endDelimiter="\n"
+            splitStatements="true"
+            stripComments="true">insert into eventcategory (code, label) values ('TANGO', 'Tango Argentino');
+        <comment>What about Bob?</comment>
+    </sql>
+  </changeSet>
+  
+  
+</databaseChangeLog> 

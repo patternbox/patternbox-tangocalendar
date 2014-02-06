@@ -22,6 +22,7 @@
   <modules>
     <module>tangocal-app</module>
     <module>tangocal-core</module>
+    <module>tangocal-database</module>
     <module>tangocal-location</module>
     <module>tangocal-event</module>
     <module>tangocal-user</module>
