@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -22,50 +22,32 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
- ******************************************************************************/
-package com.patternbox.tangocalendar.event.logic;
+******************************************************************************/
+package com.patternbox.tangocal.calendar.application;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import static org.junit.Assert.*;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import org.junit.Before;
+import org.junit.Test;
 
-import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.event.domain.EventTemplateItem;
-import com.patternbox.tangocalendar.event.domain.EventType;
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Repository
-public class EventRepository {
+public class CalendarServiceTest {
 
-	@Inject
-	private EntityManager em;
-
-	public List<EventTemplateItem> getTemplates() {
-		return new ArrayList<EventTemplateItem>();
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
 	}
 
-	public Map<String, String> getEventCategories() {
-		Map<String, String> result = new LinkedHashMap<String, String>();
-		result.put("Tango Argentino", "TANGO");
-		result.put("Salsa", "SALSA");
-		result.put("Standard und Latein", "BALLROOM");
-		result.put("Discofox", "DISCOFOX");
-		return result;
-	}
-
-	public List<SingleEvent> getEvents(Date fromDate, Date toDate) {
-		List<SingleEvent> result = new ArrayList<SingleEvent>();
-		SingleEvent event = new SingleEvent("Hallo", fromDate, "20:00", "22:00", "TANGO",
-				EventType.Milonga);
-		result.add(event);
-		return result;
+	/**
+	 * Test method for {@link com.patternbox.tangocal.calendar.application.CalendarService#fetchEventDates()}.
+	 */
+	@Test
+	public void testFetchEventDates() {
+		fail("Not yet implemented");
 	}
 }

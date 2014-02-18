@@ -30,14 +30,14 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.patternbox.tangocalendar.annotations.Service;
+import com.patternbox.tangocalendar.annotations.DomainService;
 import com.patternbox.tangocalendar.event.domain.SingleEvent;
 import com.patternbox.tangocalendar.event.domain.EventTemplate;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Service
+@DomainService
 @Stateless
 public class EventService {
 

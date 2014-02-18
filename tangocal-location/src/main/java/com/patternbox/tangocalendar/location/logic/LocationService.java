@@ -31,7 +31,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.patternbox.tangocalendar.annotations.Service;
+import com.patternbox.tangocalendar.annotations.DomainService;
 import com.patternbox.tangocalendar.location.domain.Location;
 
 /**
@@ -40,7 +40,7 @@ import com.patternbox.tangocalendar.location.domain.Location;
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-@Service
+@DomainService
 @Stateless
 public class LocationService {
 

@@ -14,13 +14,11 @@
       <name>Dirk Ehms</name>
       <organization>PatternBox</organization>
       <organizationUrl>http://www.patternbox.com</organizationUrl>
-      <roles>
-        <role>All-in-One</role>
-      </roles>
     </developer>
   </developers>
   <modules>
     <module>tangocal-app</module>
+    <module>tangocal-calendar</module>
     <module>tangocal-core</module>
     <module>tangocal-database</module>
     <module>tangocal-location</module>

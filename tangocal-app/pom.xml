@@ -10,12 +10,12 @@
   <packaging>ear</packaging>
   <dependencies>
 
-    <dependency>
+    <!-- dependency>
       <groupId>com.patternbox.tangocalendar</groupId>
       <artifactId>tangocal-database</artifactId>
       <version>1.0-SNAPSHOT</version>
       <type>ejb</type>
-    </dependency>
+    </dependency-->
 
     <dependency>
       <groupId>com.patternbox.tangocalendar</groupId>
@@ -38,6 +38,13 @@
       <type>war</type>
     </dependency>
 
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-calendar</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>war</type>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -54,7 +61,13 @@
             <webModule>
               <groupId>com.patternbox.tangocalendar</groupId>
               <artifactId>tangocal-web</artifactId>
-              <contextRoot>/tangocalendar</contextRoot>
+              <contextRoot>/eventmgmt</contextRoot>
+            </webModule>
+
+            <webModule>
+              <groupId>com.patternbox.tangocalendar</groupId>
+              <artifactId>tangocal-calendar</artifactId>
+              <contextRoot>/calendar</contextRoot>
             </webModule>
 
           </modules>

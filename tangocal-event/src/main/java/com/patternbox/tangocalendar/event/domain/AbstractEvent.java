@@ -27,6 +27,8 @@ package com.patternbox.tangocalendar.event.domain;
 
 import static com.patternbox.tangocalendar.location.domain.Location.FK_LOCATION;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,7 +38,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.patternbox.tangocalendar.location.domain.Location;
 import com.patternbox.tangocalendar.types.Entity;
@@ -46,6 +52,7 @@ import com.patternbox.tangocalendar.types.Entity;
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
+@XmlRootElement
 @javax.persistence.Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
@@ -56,6 +63,13 @@ public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 
 	@Column(unique = true, nullable = false)
 	private String eventName;
+
+	@Temporal(TemporalType.DATE)
+	private Date eventDate;
+
+	private String startTime;
+
+	private String endTime;
 
 	/**
 	 * Uses {@link EventCategory} as lookup.
@@ -69,6 +83,28 @@ public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 	@ManyToOne
 	@JoinColumn(name = FK_LOCATION)
 	private Location location;
+
+	public AbstractEvent() {
+		super();
+	}
+
+	/**
+	 * @param eventName
+	 * @param eventDate
+	 * @param startTime
+	 * @param endTime
+	 * @param categoryCode
+	 * @param eventType
+	 */
+	public AbstractEvent(String eventName, Date eventDate, String startTime, String endTime,
+			String categoryCode, EventType eventType) {
+		this.eventName = eventName;
+		this.eventDate = eventDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.categoryCode = categoryCode;
+		this.eventType = eventType;
+	}
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
@@ -99,5 +135,49 @@ public abstract class AbstractEvent implements Entity<AbstractEvent, Long> {
 	 */
 	public Location getLocation() {
 		return location;
+	}
+
+	/**
+	 * @return the identifier
+	 */
+	@XmlTransient
+	public Long getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * @return the eventDate
+	 */
+	@XmlTransient
+	public Date getEventDate() {
+		return eventDate;
+	}
+
+	/**
+	 * @return the startTime
+	 */
+	public String getStartTime() {
+		return startTime;
+	}
+
+	/**
+	 * @return the endTime
+	 */
+	public String getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * @return the categoryCode
+	 */
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+
+	/**
+	 * @return the eventType
+	 */
+	public EventType getEventType() {
+		return eventType;
 	}
 }

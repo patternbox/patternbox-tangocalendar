@@ -28,4 +28,9 @@ SUCH DAMAGE.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
+@DDDLayer(DDDLayerType.DOMAIN_LAYER)
 package com.patternbox.tangocalendar.event.domain;
+
+import com.patternbox.tangocalendar.annotations.DDDLayer;
+import com.patternbox.tangocalendar.annotations.DDDLayer.DDDLayerType;
+

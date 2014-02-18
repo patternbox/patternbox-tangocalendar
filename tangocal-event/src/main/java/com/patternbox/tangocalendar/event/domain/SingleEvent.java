@@ -28,6 +28,8 @@ package com.patternbox.tangocalendar.event.domain;
 import static com.patternbox.tangocalendar.event.domain.EventTemplateItem.FK_EVENT_TEMPLATE;
 import static com.patternbox.tangocalendar.event.domain.Teacher.FK_TEACHER;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -53,4 +55,21 @@ public class SingleEvent extends AbstractEvent {
 	@ManyToOne
 	@JoinColumn(name = FK_TEACHER)
 	private Teacher teacher;
+
+	public SingleEvent() {
+		super();
+	}
+
+	/**
+	 * @param eventName
+	 * @param eventDate
+	 * @param startTime
+	 * @param endTime
+	 * @param categoryCode
+	 * @param eventType
+	 */
+	public SingleEvent(String eventName, Date eventDate, String startTime, String endTime,
+			String categoryCode, EventType eventType) {
+		super(eventName, eventDate, startTime, endTime, categoryCode, eventType);
+	}
 }

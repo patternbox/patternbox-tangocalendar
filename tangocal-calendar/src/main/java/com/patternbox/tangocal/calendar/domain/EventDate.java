@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,49 +23,47 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.logic;
+package com.patternbox.tangocal.calendar.domain;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.event.domain.EventTemplateItem;
-import com.patternbox.tangocalendar.event.domain.EventType;
 import com.patternbox.tangocalendar.event.domain.SingleEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Repository
-public class EventRepository {
+public class EventDate {
 
-	@Inject
-	private EntityManager em;
+	private static final String ISO_DATE_FORMAT = "yyyy-MM-dd";
 
-	public List<EventTemplateItem> getTemplates() {
-		return new ArrayList<EventTemplateItem>();
+	private final String isoDate;
+
+	private final List<SingleEvent> events = new ArrayList<SingleEvent>();
+
+	public EventDate(Date date) {
+		DateFormat df = new SimpleDateFormat(ISO_DATE_FORMAT);
+		isoDate = df.format(date);
 	}
 
-	public Map<String, String> getEventCategories() {
-		Map<String, String> result = new LinkedHashMap<String, String>();
-		result.put("Tango Argentino", "TANGO");
-		result.put("Salsa", "SALSA");
-		result.put("Standard und Latein", "BALLROOM");
-		result.put("Discofox", "DISCOFOX");
-		return result;
+	public void appendEvent(SingleEvent event) {
+		events.add(event);
 	}
 
-	public List<SingleEvent> getEvents(Date fromDate, Date toDate) {
-		List<SingleEvent> result = new ArrayList<SingleEvent>();
-		SingleEvent event = new SingleEvent("Hallo", fromDate, "20:00", "22:00", "TANGO",
-				EventType.Milonga);
-		result.add(event);
-		return result;
+	/**
+	 * Return the ISO formatted date
+	 */
+	public String getIsoDate() {
+		return isoDate;
+	}
+
+	/**
+	 * @return the events
+	 */
+	public List<SingleEvent> getEvents() {
+		return events;
 	}
 }
