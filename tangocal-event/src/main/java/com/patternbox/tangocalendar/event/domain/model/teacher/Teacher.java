@@ -23,49 +23,47 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.event.domain.model.teacher;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import com.patternbox.tangocalendar.types.Entity;
 
 /**
- * Event category as DDD value object.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Entity
-@SuppressWarnings("serial")
-public class EventCategory implements ValueObject<EventCategory> {
+@javax.persistence.Entity
+public class Teacher implements Entity<Teacher, Long> {
+
+	public static final String FK_TEACHER = "Teacher_FK";
 
 	@Id
-	private String code;
+	@GeneratedValue
+	private Long identifier;
 
-	@Column(nullable = false, updatable = false)
-	private String label;
+	@Column(unique = true, nullable = false)
+	private String name;
 
-	/**
-	 * Default constructor to satisfy JPA.
-	 */
-	public EventCategory() {
-		super();
-	}
+	private String phone;
+
+	private String email;
 
 	/**
-	 * Parameterized constructor.
-	 */
-	public EventCategory(String code, String label) {
-		this.code = code;
-		this.label = label;
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameValueAs(EventCategory other) {
-		return code.equalsIgnoreCase(other.code);
+	public boolean sameIdentityAs(Teacher other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 */
+	@Override
+	public Long getIdentifer() {
+		return identifier;
 	}
 }

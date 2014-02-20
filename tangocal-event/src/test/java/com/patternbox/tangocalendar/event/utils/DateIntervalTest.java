@@ -37,8 +37,8 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.patternbox.tangocalendar.event.domain.Recurrence;
-import com.patternbox.tangocalendar.event.domain.Recurrence.DayOfWeek;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence.DayOfWeek;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

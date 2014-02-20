@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,53 +23,11 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
-
-import static com.patternbox.tangocalendar.event.domain.EventTemplateItem.FK_EVENT_TEMPLATE;
-import static com.patternbox.tangocalendar.event.domain.Teacher.FK_TEACHER;
-
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+package com.patternbox.tangocalendar.event.domain.model;
 
 /**
- * Entity of a single tango event.
- * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Entity
-public class SingleEvent extends AbstractEvent {
-
-	static final String FK_PARENT_EVENT = "ParentEvent_FK";
-
-	@ManyToOne
-	@JoinColumn(name = FK_PARENT_EVENT)
-	private MultiEvent parentEvent;
-
-	@ManyToOne
-	@JoinColumn(name = FK_EVENT_TEMPLATE)
-	EventTemplate template;
-
-	@ManyToOne
-	@JoinColumn(name = FK_TEACHER)
-	private Teacher teacher;
-
-	public SingleEvent() {
-		super();
-	}
-
-	/**
-	 * @param eventName
-	 * @param eventDate
-	 * @param startTime
-	 * @param endTime
-	 * @param categoryCode
-	 * @param eventType
-	 */
-	public SingleEvent(String eventName, Date eventDate, String startTime, String endTime,
-			String categoryCode, EventType eventType) {
-		super(eventName, eventDate, startTime, endTime, categoryCode, eventType);
-	}
+public enum EventType {
+	Practica, Milonga, Workshop, DanceClass, Festival, Voyage;
 }

@@ -31,8 +31,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import com.patternbox.tangocalendar.annotations.DomainService;
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
-import com.patternbox.tangocalendar.event.domain.EventTemplate;
+import com.patternbox.tangocalendar.event.domain.model.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

@@ -23,50 +23,47 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.event.domain.model.eventtemplate;
 
-import static com.patternbox.tangocalendar.event.domain.EventTemplateItem.FK_EVENT_TEMPLATE;
-import static com.patternbox.tangocalendar.location.domain.Location.FK_LOCATION;
+import static com.patternbox.tangocalendar.event.domain.model.teacher.Teacher.FK_TEACHER;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
-import com.patternbox.tangocalendar.location.domain.Location;
+import com.patternbox.tangocalendar.event.domain.model.teacher.Teacher;
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @javax.persistence.Entity
-public class EventTemplate implements Entity<EventTemplate, Long> {
+public class EventTemplateItem implements Entity<EventTemplateItem, Long> {
+
+	public static final String FK_EVENT_TEMPLATE = "EventTemplate_FK";
 
 	@Id
 	@GeneratedValue
 	private Long identifier;
 
-	@Embedded
-	private Recurrence recurrence;
+	@NotNull
+	private String eventName;
 
 	@ManyToOne
-	@JoinColumn(name = FK_LOCATION)
-	private Location location;
-
-	@OneToMany
 	@JoinColumn(name = FK_EVENT_TEMPLATE)
-	private final List<EventTemplateItem> templateItems = new ArrayList<EventTemplateItem>();
+	EventTemplate template;
+
+	@ManyToOne
+	@JoinColumn(name = FK_TEACHER)
+	private Teacher teacher;
 
 	/**
 	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
-	public boolean sameIdentityAs(EventTemplate other) {
+	public boolean sameIdentityAs(EventTemplateItem other) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -80,32 +77,17 @@ public class EventTemplate implements Entity<EventTemplate, Long> {
 	}
 
 	/**
-	 * Compose name from template events.
-	 * 
-	 * @return the template header name
+	 * @return the eventName
 	 */
-	public String getName() {
-		final String delimiter = " / ";
-		StringBuilder result = new StringBuilder();
-		for (EventTemplateItem template : templateItems) {
-			result.append(template.getEventName());
-			result.append(delimiter);
-		}
-		// post processing
-		if (result.length() > delimiter.length()) {
-			result.setLength(result.length() - delimiter.length());
-		} else {
-			result.append("???");
-		}
-		return result.toString();
+	public String getEventName() {
+		return eventName;
 	}
 
 	/**
-	 * Applies the template definition and returns a list of created events.
-	 * 
-	 * @return a list of events
+	 * @param eventName
+	 *          the eventName to set
 	 */
-	public List<SingleEvent> applyTemplate() {
-		return null;
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 }

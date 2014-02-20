@@ -23,47 +23,56 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.domain;
+package com.patternbox.tangocalendar.event.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem.FK_EVENT_TEMPLATE;
+import static com.patternbox.tangocalendar.event.domain.model.teacher.Teacher.FK_TEACHER;
 
-import com.patternbox.tangocalendar.types.Entity;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate;
+import com.patternbox.tangocalendar.event.domain.model.teacher.Teacher;
 
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * Entity of a single tango event.
+ * 
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-@javax.persistence.Entity
-public class Teacher implements Entity<Teacher, Long> {
+@Entity
+public class SingleEvent extends AbstractEvent {
 
-	static final String FK_TEACHER = "Teacher_FK";
+	static final String FK_PARENT_EVENT = "ParentEvent_FK";
 
-	@Id
-	@GeneratedValue
-	private Long identifier;
+	@ManyToOne
+	@JoinColumn(name = FK_PARENT_EVENT)
+	private MultiEvent parentEvent;
 
-	@Column(unique = true, nullable = false)
-	private String name;
+	@ManyToOne
+	@JoinColumn(name = FK_EVENT_TEMPLATE)
+	EventTemplate template;
 
-	private String phone;
+	@ManyToOne
+	@JoinColumn(name = FK_TEACHER)
+	private Teacher teacher;
 
-	private String email;
-
-	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
-	 */
-	@Override
-	public boolean sameIdentityAs(Teacher other) {
-		// TODO Auto-generated method stub
-		return false;
+	public SingleEvent() {
+		super();
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @param eventName
+	 * @param eventDate
+	 * @param startTime
+	 * @param endTime
+	 * @param categoryCode
+	 * @param eventType
 	 */
-	@Override
-	public Long getIdentifer() {
-		return identifier;
+	public SingleEvent(String eventName, Date eventDate, String startTime, String endTime,
+			String categoryCode, EventType eventType) {
+		super(eventName, eventDate, startTime, endTime, categoryCode, eventType);
 	}
 }

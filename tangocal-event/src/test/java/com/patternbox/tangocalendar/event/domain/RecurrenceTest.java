@@ -36,7 +36,7 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.patternbox.tangocalendar.event.domain.Recurrence;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -51,7 +51,7 @@ public class RecurrenceTest {
 	}
 
 	/**
-	 * Test method for {@link com.patternbox.tangocalendar.event.domain.Recurrence#getToday()}.
+	 * Test method for {@link com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence#getToday()}.
 	 */
 	@Test
 	public void testGetToday() throws ParseException {
@@ -65,7 +65,7 @@ public class RecurrenceTest {
 
 	/**
 	 * Test method for
-	 * {@link com.patternbox.tangocalendar.event.domain.Recurrence#getNextEventDates()}.
+	 * {@link com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence#getNextEventDates()}.
 	 */
 	@Test
 	public void testGetNextEventDates() {

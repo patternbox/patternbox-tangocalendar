@@ -35,9 +35,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.event.domain.EventTemplateItem;
-import com.patternbox.tangocalendar.event.domain.EventType;
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.model.EventType;
+import com.patternbox.tangocalendar.event.domain.model.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

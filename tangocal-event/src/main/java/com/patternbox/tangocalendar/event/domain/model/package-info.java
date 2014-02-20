@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2014 by D. Ehms, http://www.patternbox.com
+Copyright (C)2013 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -23,44 +23,14 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.logic;
-
-import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence.DayOfWeek.MONDAY;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.Date;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence;
-
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * Domain objects of dance event management subsystem.
+ * 
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-public class RecurrenceFactoryTest {
+@DDDLayer(DDDLayerType.DOMAIN_LAYER)
+package com.patternbox.tangocalendar.event.domain.model;
 
-	RecurrenceFactory factory;
+import com.patternbox.tangocalendar.annotations.DDDLayer;
+import com.patternbox.tangocalendar.annotations.DDDLayer.DDDLayerType;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
-		factory = new RecurrenceFactory();
-	}
-
-	/**
-	 * Test method for
-	 * {@link com.patternbox.tangocalendar.event.logic.RecurrenceFactory#createWeekly()}.
-	 */
-	@Test
-	public void testCreateWeekly() {
-		Recurrence weekly = factory.createWeekly(null, null, MONDAY);
-		assertNotNull("Factory result instance 'recurrence' is null", weekly);
-		List<Date> eventDates = weekly.getNextEventDates();
-		assertNotNull(eventDates);
-		// assertTrue(eventDates.size() > 0);
-	}
-}

@@ -23,14 +23,49 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
+package com.patternbox.tangocalendar.event.domain.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import com.patternbox.tangocalendar.types.ValueObject;
+
 /**
- * Domain objects of event management subsystem.
+ * Event category as DDD value object.
  * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@DDDLayer(DDDLayerType.DOMAIN_LAYER)
-package com.patternbox.tangocalendar.event.domain;
+@Entity
+@SuppressWarnings("serial")
+public class EventCategory implements ValueObject<EventCategory> {
 
-import com.patternbox.tangocalendar.annotations.DDDLayer;
-import com.patternbox.tangocalendar.annotations.DDDLayer.DDDLayerType;
+	@Id
+	private String code;
 
+	@Column(nullable = false, updatable = false)
+	private String label;
+
+	/**
+	 * Default constructor to satisfy JPA.
+	 */
+	public EventCategory() {
+		super();
+	}
+
+	/**
+	 * Parameterized constructor.
+	 */
+	public EventCategory(String code, String label) {
+		this.code = code;
+		this.label = label;
+	}
+
+	/**
+	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 */
+	@Override
+	public boolean sameValueAs(EventCategory other) {
+		return code.equalsIgnoreCase(other.code);
+	}
+}
