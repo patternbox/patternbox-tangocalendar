@@ -32,8 +32,8 @@ import javax.inject.Inject;
 
 import com.patternbox.tangocal.calendar.domain.EventCalendar;
 import com.patternbox.tangocalendar.annotations.DomainService;
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
-import com.patternbox.tangocalendar.event.logic.EventRepository;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -42,7 +42,7 @@ import com.patternbox.tangocalendar.event.logic.EventRepository;
 public class EventDateService {
 
 	@Inject
-	private EventRepository eventRepository;
+	private DanceEventRepository eventRepository;
 
 	/**
 	 * @param dayCount

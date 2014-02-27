@@ -35,7 +35,7 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -44,6 +44,8 @@ import com.patternbox.tangocalendar.event.domain.SingleEvent;
 public class EventCalendar {
 
 	private static final String INTERNAL_DATE_FORMAT = "yyyyMMddHHmmss";
+
+	private static final int DEFAULT_DAY_COUNT = 7;
 
 	private final String timestamp;
 
@@ -54,6 +56,13 @@ public class EventCalendar {
 	private final Map<Date, EventDate> eventDateMap = new LinkedHashMap<Date, EventDate>();
 
 	private final Map<String, SingleEvent> eventMap = new LinkedHashMap<String, SingleEvent>();
+
+	/**
+	 * Default constructor to satisfy JAXB
+	 */
+	public EventCalendar() {
+		this(DEFAULT_DAY_COUNT, new Date(0));
+	}
 
 	public EventCalendar(int dayCount, Date lastUpdate) {
 		DateFormat df = new SimpleDateFormat(INTERNAL_DATE_FORMAT);

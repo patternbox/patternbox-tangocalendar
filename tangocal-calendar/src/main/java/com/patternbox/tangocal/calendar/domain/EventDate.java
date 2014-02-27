@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.patternbox.tangocalendar.event.domain.SingleEvent;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

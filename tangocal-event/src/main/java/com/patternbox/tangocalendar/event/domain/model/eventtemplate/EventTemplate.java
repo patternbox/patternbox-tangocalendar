@@ -25,8 +25,9 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain.model.eventtemplate;
 
+import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate.QRY_EVENT_TEMPLATE_ALL;
 import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem.FK_EVENT_TEMPLATE;
-import static com.patternbox.tangocalendar.location.domain.Location.FK_LOCATION;
+import static com.patternbox.tangocalendar.location.domain.model.location.Location.FK_LOCATION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,17 +37,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import com.patternbox.tangocalendar.event.domain.model.SingleEvent;
-import com.patternbox.tangocalendar.location.domain.Location;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
+import com.patternbox.tangocalendar.location.domain.model.location.Location;
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @javax.persistence.Entity
+@NamedQueries({ @NamedQuery(name = QRY_EVENT_TEMPLATE_ALL, query = "SELECT et FROM EventTemplate et ") })
 public class EventTemplate implements Entity<EventTemplate, Long> {
+
+	public static final String QRY_EVENT_TEMPLATE_ALL = "QryEventTemplateAll";
 
 	@Id
 	@GeneratedValue

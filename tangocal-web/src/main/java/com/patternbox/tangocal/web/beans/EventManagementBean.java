@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.patternbox.tangocalendar.event.logic.EventRepository;
+import com.patternbox.tangocalendar.event.infrastructure.persistence.JpaEventCategoryFinder;
 
 /**
  * ...
@@ -18,9 +18,9 @@ import com.patternbox.tangocalendar.event.logic.EventRepository;
 public class EventManagementBean {
 
 	@Inject
-	EventRepository repository;
+	JpaEventCategoryFinder eventCategoryFinder;
 
 	public Map<String, String> getCategories() {
-		return repository.getEventCategories();
+		return eventCategoryFinder.getEventCategories();
 	}
 }

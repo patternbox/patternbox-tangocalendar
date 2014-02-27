@@ -22,14 +22,11 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
-******************************************************************************/
+ ******************************************************************************/
 package com.patternbox.tangocal.calendar.application;
-
-import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -44,10 +41,11 @@ public class CalendarServiceTest {
 	}
 
 	/**
-	 * Test method for {@link com.patternbox.tangocal.calendar.application.CalendarService#fetchEventDates()}.
+	 * Test method for
+	 * {@link com.patternbox.tangocal.calendar.application.CalendarService#fetchEventDates()}.
 	 */
 	@Test
 	public void testFetchEventDates() {
-		fail("Not yet implemented");
+		// fail("Not yet implemented");
 	}
 }

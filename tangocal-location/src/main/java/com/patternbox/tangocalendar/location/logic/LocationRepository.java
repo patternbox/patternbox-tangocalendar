@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -25,27 +25,14 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.logic;
 
-import static com.patternbox.tangocalendar.location.domain.Location.COL_NAME;
-import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_BY_NAME;
-import static com.patternbox.tangocalendar.location.domain.Location.QRY_LOCATION_NAMES;
-
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
-import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.location.domain.Location;
+import com.patternbox.tangocalendar.location.domain.model.location.Location;
 
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Repository
-public class LocationRepository {
-
-	@Inject
-	private EntityManager em;
+public interface LocationRepository {
 
 	/**
 	 * Store new location instance into database.
@@ -53,9 +40,7 @@ public class LocationRepository {
 	 * @param location
 	 *          the location to store
 	 */
-	public void storeLocation(Location location) {
-		em.persist(location);
-	}
+	public abstract void storeLocation(Location location);
 
 	/**
 	 * Returns a location for a given identifier.
@@ -64,9 +49,7 @@ public class LocationRepository {
 	 *          the location identifier
 	 * @return the location instance
 	 */
-	public Location getLocation(Long identifier) {
-		return em.find(Location.class, identifier);
-	}
+	public abstract Location findLocation(Long identifier);
 
 	/**
 	 * Returns a location for a given location name.
@@ -75,16 +58,10 @@ public class LocationRepository {
 	 *          the location name
 	 * @return the location instance
 	 */
-	public Location getLocation(String name) {
-		TypedQuery<Location> query = em.createNamedQuery(QRY_LOCATION_BY_NAME, Location.class);
-		query.setParameter(COL_NAME, name);
-		return query.getSingleResult();
-	}
+	public abstract Location findLocation(String name);
 
 	/**
 	 * Returns a list of location names.
 	 */
-	public List<String> getLocationNames() {
-		return em.createNamedQuery(QRY_LOCATION_NAMES, String.class).getResultList();
-	}
+	public abstract List<String> locationNames();
 }

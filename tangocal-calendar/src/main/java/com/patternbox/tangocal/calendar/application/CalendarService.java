@@ -32,6 +32,7 @@ import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.jws.WebService;
 import javax.validation.ValidationException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -47,6 +48,7 @@ import com.patternbox.tangocalendar.annotations.ApplicationService;
  */
 @Stateless
 @ApplicationService
+@WebService(targetNamespace = "http://tangocalendar.patternbox.com/")
 @Path("/v2")
 public class CalendarService {
 

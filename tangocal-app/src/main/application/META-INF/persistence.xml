@@ -6,13 +6,13 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <!-- jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source-->
     <jta-data-source>java:jboss/datasources/TangocalendarDS</jta-data-source>
-    <class>com.patternbox.tangocalendar.location.domain.Location</class>
-    <class>com.patternbox.tangocalendar.event.domain.EventTemplate</class>
-    <class>com.patternbox.tangocalendar.event.domain.EventTemplateItem</class>
-    <class>com.patternbox.tangocalendar.event.domain.MultiEvent</class>
-    <class>com.patternbox.tangocalendar.event.domain.SingleEvent</class>
-    <class>com.patternbox.tangocalendar.event.domain.EventCategory</class>
-    <class>com.patternbox.tangocalendar.event.domain.Teacher</class>
+    <class>com.patternbox.tangocalendar.location.domain.model.location.Location</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.MultiEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.teacher.Teacher</class>
     <properties>
       <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /-->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
@@ -21,4 +21,31 @@
       <property name="hibernate.show_sql" value="true" />
     </properties>
   </persistence-unit>
+
+  <!-- persistence-unit name="primary" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>java:jboss/datasources/CDISecurityExampleDS
+    </jta-data-source>
+
+    <class>org.picketlink.idm.jpa.schema.IdentityObject</class>
+    <class>org.picketlink.idm.jpa.schema.PartitionObject</class>
+    <class>org.picketlink.idm.jpa.schema.RelationshipObject</class>
+    <class>org.picketlink.idm.jpa.schema.RelationshipIdentityObject
+    </class>
+    <class>org.picketlink.idm.jpa.schema.RelationshipObjectAttribute
+    </class>
+    <class>org.picketlink.idm.jpa.schema.IdentityObjectAttribute</class>
+    <class>org.picketlink.idm.jpa.schema.CredentialObject</class>
+    <class>org.picketlink.idm.jpa.schema.CredentialObjectAttribute
+    </class>
+
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+      <property name="hibernate.show_sql" value="false" />
+      <property name="hibernate.transaction.flush_before_completion"
+        value="true" />
+    </properties>
+  </persistence-unit-->
 </persistence>   

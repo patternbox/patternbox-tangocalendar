@@ -35,25 +35,26 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence;
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateFactory;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 public class RecurrenceFactoryTest {
 
-	RecurrenceFactory factory;
+	EventTemplateFactory factory;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		factory = new RecurrenceFactory();
+		factory = new EventTemplateFactory();
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.patternbox.tangocalendar.event.logic.RecurrenceFactory#createWeekly()}.
+	 * {@link com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateFactory#createWeekly()}.
 	 */
 	@Test
 	public void testCreateWeekly() {
