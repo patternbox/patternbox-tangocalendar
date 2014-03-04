@@ -10,12 +10,12 @@
   <packaging>ear</packaging>
   <dependencies>
 
-    <!-- dependency>
+    <dependency>
       <groupId>com.patternbox.tangocalendar</groupId>
       <artifactId>tangocal-database</artifactId>
       <version>1.0-SNAPSHOT</version>
       <type>ejb</type>
-    </dependency-->
+    </dependency>
 
     <dependency>
       <groupId>com.patternbox.tangocalendar</groupId>
