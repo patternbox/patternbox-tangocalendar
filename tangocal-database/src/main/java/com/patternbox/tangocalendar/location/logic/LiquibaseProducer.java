@@ -64,20 +64,3 @@ public class LiquibaseProducer {
 		return new ClassLoaderResourceAccessor(getClass().getClassLoader());
 	}
 }
-/*
- * 
- * @Stateless public class LiquibaseProducer {
- * 
- * @Resource(name = "jdbc/easyScrum") private DataSource myDataSource;
- * 
- * 
- * @Produces @LiquibaseType public CDILiquibaseConfig createConfig() { CDILiquibaseConfig config =
- * new CDILiquibaseConfig(); config.setChangeLog("/changelog.xml"); return config; }
- * 
- * @Produces @LiquibaseType public DataSource createDataSource() throws SQLException,
- * NamingException { if (myDataSource == null) throw new
- * IllegalStateException("Missing jdbc/easyScrum in container!"); return myDataSource; }
- * 
- * @Produces @LiquibaseType public ResourceAccessor create() { return new
- * ClassLoaderResourceAccessor(getClass().getClassLoader()); }
- */

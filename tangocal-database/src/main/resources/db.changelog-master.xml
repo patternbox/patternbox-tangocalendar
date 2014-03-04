@@ -8,11 +8,24 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <preConditions>
-        <runningAs username="root"/>
+        <runningAs username="tangocalendar"/>
     </preConditions>
 
-    <changeSet id="1" author="pattenbox">
-        <comment>A sample change log</comment>
+    <changeSet id="1" author="patternbox">
+        <comment>A sample change log. Ups.</comment>
     </changeSet>
 
+  <changeSet id="sql-example" author="liquibase-docs">
+    <sql>insert into eventcategory (code, label) values ('TANGO', 'Tango Argentino')</sql>
+  </changeSet>
+  
+  <changeSet id="3" author="liquibase-docs">
+    <sql>
+      insert into eventcategory (code, label) values 
+        ('SALSA', 'Salsa'),
+        ('BALLROOM', 'Standard und Latein'),
+        ('DISCOFOX', 'Discofox')
+    </sql>
+  </changeSet>
+  
 </databaseChangeLog>

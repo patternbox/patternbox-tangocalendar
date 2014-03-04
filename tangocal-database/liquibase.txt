@@ -1,0 +1,3 @@
+
+GRANT ALL PRIVILEGES ON tango_ref.* TO 'tangocalendar'@'localhost';
+FLUSH PRIVILEGES;
