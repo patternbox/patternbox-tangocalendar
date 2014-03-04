@@ -26,4 +26,4 @@ SUCH DAMAGE.
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-package com.patternbox.tangocalendar.event.application.handler;
+package com.patternbox.tangocalendar.location.application.handler;

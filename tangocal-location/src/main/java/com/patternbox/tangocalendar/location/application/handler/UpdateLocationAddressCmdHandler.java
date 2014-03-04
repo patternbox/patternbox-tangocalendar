@@ -1,4 +1,4 @@
-package com.patternbox.tangocalendar.event.application.handler;
+package com.patternbox.tangocalendar.location.application.handler;
 
 import java.util.logging.Logger;
 
@@ -14,7 +14,7 @@ import com.patternbox.tangocalendar.location.application.command.UpdateLocationA
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @Named
-public class CreateEventTemplateCmdHandler implements
+public class UpdateLocationAddressCmdHandler implements
 		CommandHandler<UpdateLocationAddressCommand, Void> {
 
 	@Inject

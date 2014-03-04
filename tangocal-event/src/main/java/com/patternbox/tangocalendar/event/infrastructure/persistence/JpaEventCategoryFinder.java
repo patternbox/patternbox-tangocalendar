@@ -30,19 +30,42 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-import com.patternbox.tangocalendar.annotations.Repository;
+import com.patternbox.tangocalendar.annotations.Finder;
+import com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Repository
+@Finder
 public class JpaEventCategoryFinder {
 
 	@Inject
 	private EntityManager em;
 
 	public Map<String, String> getEventCategories() {
+		Map<String, String> result = new LinkedHashMap<String, String>();
+		TypedQuery<EventCategory> qry = em.createNamedQuery("EventCategory.findAll",
+				EventCategory.class);
+		for (EventCategory ec : qry.getResultList()) {
+			result.put(ec.getLabel(), ec.getCode());
+		}
+		return result;
+	}
+
+	public Map<String, String> getEventCategories2() {
+		Map<String, String> result = new LinkedHashMap<String, String>();
+		TypedQuery<EventCategory> qry = em.createQuery("select ec from EventCategory ec",
+				EventCategory.class);
+		for (EventCategory ec : qry.getResultList()) {
+			result.put(ec.getLabel(), ec.getCode());
+		}
+		return result;
+	}
+
+	@Deprecated
+	public Map<String, String> getEventCategoriesOld() {
 		Map<String, String> result = new LinkedHashMap<String, String>();
 		result.put("Tango Argentino", "TANGO");
 		result.put("Salsa", "SALSA");

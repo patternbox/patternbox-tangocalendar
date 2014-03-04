@@ -68,4 +68,18 @@ public class EventCategory implements ValueObject<EventCategory> {
 	public boolean sameValueAs(EventCategory other) {
 		return code.equalsIgnoreCase(other.code);
 	}
+
+	/**
+	 * @return the code
+	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * @return the label
+	 */
+	public String getLabel() {
+		return label;
+	}
 }
