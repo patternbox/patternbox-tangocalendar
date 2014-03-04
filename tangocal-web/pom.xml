@@ -22,26 +22,5 @@
       <version>2.1.1-b02</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.picketbox</groupId>
-      <artifactId>picketbox-core</artifactId>
-      <version>5.0.0.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.picketbox</groupId>
-      <artifactId>picketbox-http</artifactId>
-      <version>5.0.0.Final</version>
-    </dependency>
-    <dependency>
-      <groupId>org.picketlink.extensions</groupId>
-      <artifactId>picketlink-extensions-core</artifactId>
-      <version>3.0.0-2013Feb08</version>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-jaxrs</artifactId>
-      <version>1.9.2</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
 </project>
