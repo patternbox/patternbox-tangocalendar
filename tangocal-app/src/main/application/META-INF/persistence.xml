@@ -6,7 +6,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <!-- jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source-->
     <jta-data-source>java:jboss/datasources/TangocalendarDS</jta-data-source>
-    <mapping-file>META-INF/events.xml</mapping-file>
+    <mapping-file>META-INF/jpa-event-queries.xml</mapping-file>
     
     <class>com.patternbox.tangocalendar.location.domain.model.location.Location</class>
     <class>com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate</class>
@@ -15,6 +15,8 @@
     <class>com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent</class>
     <class>com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory</class>
     <class>com.patternbox.tangocalendar.event.domain.model.teacher.Teacher</class>
+    
+    <class>com.patternbox.tangocalendar.event.infrastructure.persistence.JpaEventCategoryFinder</class>
     
     <properties>
       <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /-->

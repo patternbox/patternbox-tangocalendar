@@ -30,6 +30,9 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TypedQuery;
 
 import com.patternbox.tangocalendar.annotations.Finder;
@@ -39,12 +42,24 @@ import com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory;
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @Finder
+@MappedSuperclass
+@NamedQueries({ @NamedQuery(name = "JpaEventCategoryFinder.findAll", query = "SELECT ec FROM EventCategory ec ") })
 public class JpaEventCategoryFinder {
 
 	@Inject
 	private EntityManager em;
 
 	public Map<String, String> getEventCategories() {
+		Map<String, String> result = new LinkedHashMap<String, String>();
+		TypedQuery<EventCategory> qry = em.createNamedQuery("JpaEventCategoryFinder.findAll",
+				EventCategory.class);
+		for (EventCategory ec : qry.getResultList()) {
+			result.put(ec.getLabel(), ec.getCode());
+		}
+		return result;
+	}
+
+	public Map<String, String> getEventCategories3() {
 		Map<String, String> result = new LinkedHashMap<String, String>();
 		TypedQuery<EventCategory> qry = em.createNamedQuery("EventCategory.findAll",
 				EventCategory.class);
