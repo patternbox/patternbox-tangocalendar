@@ -11,9 +11,9 @@
 	<h1>#{msgs.title}</h1>
 	<br />
 	<h:form>
-		<h:selectOneListbox value="#{eventTemplate.categoryCode}">
+		<h:selectOneMenu value="#{eventTemplate.categoryCode}">
 			<f:selectItems value="#{eventManagement.categories}" />
-		</h:selectOneListbox>
+		</h:selectOneMenu>
 		<p>
 			<h:commandButton value="#{msgs.exec}" />
 		</p>

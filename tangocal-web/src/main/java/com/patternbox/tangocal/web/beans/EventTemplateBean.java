@@ -1,14 +1,15 @@
 package com.patternbox.tangocal.web.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.patternbox.tangocalendar.command.CommandService;
-import com.patternbox.tangocalendar.location.application.command.UpdateLocationAddressCommand;
+import com.patternbox.tangocalendar.event.application.command.CreateEventTemplateCommand;
 
 /**
  * ...
@@ -17,7 +18,8 @@ import com.patternbox.tangocalendar.location.application.command.UpdateLocationA
  */
 @SuppressWarnings("serial")
 @Named("eventTemplate")
-@ConversationScoped
+// @ConversationScoped
+@RequestScoped
 public class EventTemplateBean implements Serializable {
 
 	@Inject
@@ -26,7 +28,7 @@ public class EventTemplateBean implements Serializable {
 	@Inject
 	private CommandService commandService;
 
-	private String categoryCode;
+	private String categoryCode = "TANGO";
 
 	/**
 	 * @return the categoryCode
@@ -41,8 +43,9 @@ public class EventTemplateBean implements Serializable {
 	 */
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;
-		logger.warning("YYYYYYYYYYYYYYYYYYYYYYYY");
-		UpdateLocationAddressCommand cmd = new UpdateLocationAddressCommand();
+		logger.warning("Category_Code: " + categoryCode);
+		CreateEventTemplateCommand cmd = new CreateEventTemplateCommand(new Date(), new Date(), 0,
+				categoryCode, null);
 		commandService.execute(cmd);
 	}
 }

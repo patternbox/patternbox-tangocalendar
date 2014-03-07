@@ -27,14 +27,11 @@ package com.patternbox.tangocalendar.event.domain.model.danceevent;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 public interface DanceEventRepository {
-
-	public abstract Map<String, String> getEventCategories();
 
 	public abstract List<SingleEvent> getEvents(Date fromDate, Date toDate);
 }

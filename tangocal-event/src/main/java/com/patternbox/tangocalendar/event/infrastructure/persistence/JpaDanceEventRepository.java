@@ -27,9 +27,7 @@ package com.patternbox.tangocalendar.event.infrastructure.persistence;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -47,19 +45,6 @@ public class JpaDanceEventRepository implements DanceEventRepository {
 
 	@Inject
 	private EntityManager em;
-
-	/**
-	 * @see com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository#getEventCategories()
-	 */
-	@Override
-	public Map<String, String> getEventCategories() {
-		Map<String, String> result = new LinkedHashMap<String, String>();
-		result.put("Tango Argentino", "TANGO");
-		result.put("Salsa", "SALSA");
-		result.put("Standard und Latein", "BALLROOM");
-		result.put("Discofox", "DISCOFOX");
-		return result;
-	}
 
 	/**
 	 * @see com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository#getEvents(java.util.Date,
