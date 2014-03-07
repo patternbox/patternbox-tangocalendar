@@ -23,45 +23,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocal.calendar.logic;
-
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.inject.Inject;
-
-import com.patternbox.tangocal.calendar.domain.model.EventCalendar;
-import com.patternbox.tangocalendar.annotations.DomainService;
-import com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository;
-import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
-
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@DomainService
-public class EventDateService {
-
-	@Inject
-	private DanceEventRepository eventRepository;
-
-	/**
-	 * @param dayCount
-	 *          the number of days
-	 * @return
-	 */
-	public EventCalendar findEvents(int dayCount, Date lastUpdate) {
-		Date fromDate = new Date();
-		Date toDate = calcToDate(dayCount);
-		EventCalendar result = new EventCalendar(dayCount, lastUpdate);
-		for (SingleEvent event : eventRepository.getEvents(fromDate, toDate)) {
-			result.appendEvent(event);
-		}
-		return result;
-	}
-
-	private Date calcToDate(int dayCount) {
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.MONTH, 1);
-		return cal.getTime();
-	}
-}
+package com.patternbox.tangocalendar.event.application.handler;

@@ -39,7 +39,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-import com.patternbox.tangocal.calendar.domain.EventCalendar;
+import com.patternbox.tangocal.calendar.domain.model.EventCalendar;
 import com.patternbox.tangocal.calendar.logic.EventDateService;
 import com.patternbox.tangocalendar.annotations.ApplicationService;
 

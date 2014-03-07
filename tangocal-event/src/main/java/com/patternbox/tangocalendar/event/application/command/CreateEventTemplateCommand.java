@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.inject.Named;
 
+import com.patternbox.tangocalendar.event.domain.model.eventtemplate.Recurrence;
+
 /**
  * ...
  * 
@@ -14,25 +16,33 @@ import javax.inject.Named;
 @SuppressWarnings("serial")
 public class CreateEventTemplateCommand implements Serializable {
 
-	private Date startDate;
+	private final Date startDate;
 
-	private Date endDate;
+	private final Date endDate;
 
-	private long locationId;
+	private final long locationId;
+
+	private final String eventCategory;
+
+	private final Recurrence recurrence;
+
+	/**
+	 * Parameterized constructor
+	 */
+	public CreateEventTemplateCommand(Date startDate, Date endDate, long locationId,
+			String eventCategory, Recurrence recurrence) {
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.locationId = locationId;
+		this.eventCategory = eventCategory;
+		this.recurrence = recurrence;
+	}
 
 	/**
 	 * @return the startDate
 	 */
 	public Date getStartDate() {
 		return startDate;
-	}
-
-	/**
-	 * @param startDate
-	 *          the startDate to set
-	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
 	}
 
 	/**
@@ -43,14 +53,6 @@ public class CreateEventTemplateCommand implements Serializable {
 	}
 
 	/**
-	 * @param endDate
-	 *          the endDate to set
-	 */
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	/**
 	 * @return the locationId
 	 */
 	public long getLocationId() {
@@ -58,10 +60,16 @@ public class CreateEventTemplateCommand implements Serializable {
 	}
 
 	/**
-	 * @param locationId
-	 *          the locationId to set
+	 * @return the eventCategory
 	 */
-	public void setLocationId(long locationId) {
-		this.locationId = locationId;
+	public String getEventCategory() {
+		return eventCategory;
+	}
+
+	/**
+	 * @return the recurrence
+	 */
+	public Recurrence getRecurrence() {
+		return recurrence;
 	}
 }
