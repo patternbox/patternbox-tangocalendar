@@ -1,6 +1,6 @@
 /**************************** Copyright notice ********************************
 
-Copyright (C)2013 by D. Ehms, http://www.patternbox.com
+Copyright (C)2014 by D. Ehms, http://www.patternbox.com
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
