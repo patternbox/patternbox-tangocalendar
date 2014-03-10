@@ -24,8 +24,8 @@ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
 /**
- * Business logic implementation of location management subsystem.
+ * Validate database schema and data and run update when necessary.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-package com.patternbox.tangocalendar.location.logic;
+package com.patternbox.tangocalendar.database.infrastructure.dbschema;
