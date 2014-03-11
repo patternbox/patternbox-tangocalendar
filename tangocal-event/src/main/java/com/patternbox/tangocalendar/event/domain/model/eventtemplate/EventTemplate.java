@@ -27,7 +27,6 @@ package com.patternbox.tangocalendar.event.domain.model.eventtemplate;
 
 import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate.QRY_EVENT_TEMPLATE_ALL;
 import static com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem.FK_EVENT_TEMPLATE;
-import static com.patternbox.tangocalendar.location.domain.model.location.Location.FK_LOCATION;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +35,13 @@ import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
-import com.patternbox.tangocalendar.location.domain.model.location.Location;
+import com.patternbox.tangocalendar.event.domain.model.shared.LocationId;
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
@@ -61,9 +60,8 @@ public class EventTemplate implements Entity<EventTemplate, Long> {
 	@Embedded
 	private Recurrence recurrence;
 
-	@ManyToOne
-	@JoinColumn(name = FK_LOCATION)
-	private Location location;
+	@NotNull
+	private LocationId locationId;
 
 	@OneToMany
 	@JoinColumn(name = FK_EVENT_TEMPLATE)

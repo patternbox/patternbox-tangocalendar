@@ -23,34 +23,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event.infrastructure.persistence;
-
-import java.util.List;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import com.patternbox.tangocalendar.annotations.Repository;
-import com.patternbox.tangocalendar.event.cdi.EventManagement;
-import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate;
-import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateRepository;
-
 /**
+ * CDI stuff.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Repository
-public class JpaEventTemplateRepository implements EventTemplateRepository {
-
-	@Inject
-	@EventManagement
-	private EntityManager em;
-
-	/**
-	 * @see com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateRepository#getEventTemplates()
-	 */
-	@Override
-	public List<EventTemplate> getEventTemplates() {
-		return em.createNamedQuery(EventTemplate.QRY_EVENT_TEMPLATE_ALL, EventTemplate.class)
-				.getResultList();
-	}
-}
+package com.patternbox.tangocalendar.event.cdi;

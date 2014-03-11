@@ -41,6 +41,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.TypedQuery;
 
 import com.patternbox.tangocalendar.annotations.Finder;
+import com.patternbox.tangocalendar.event.cdi.EventManagement;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory;
 
 /**
@@ -53,6 +54,7 @@ import com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory;
 public class JpaEventCategoryFinder {
 
 	@Inject
+	@EventManagement
 	private EntityManager em;
 
 	private Map<String, String> eventCategories;

@@ -25,7 +25,6 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.producer;
 
-import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -36,7 +35,7 @@ import javax.persistence.PersistenceContext;
  */
 public class DatabaseProducer {
 
-	@Produces
-	@PersistenceContext
+	// @Produces
+	@PersistenceContext(unitName = "EventPU")
 	private EntityManager em;
 }

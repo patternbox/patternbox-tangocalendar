@@ -8,12 +8,17 @@
   <artifactId>tangocal-event</artifactId>
   <packaging>ejb</packaging>
   <dependencies>
-  	<dependency>
+  	<!-- dependency>
   		<groupId>com.patternbox.tangocalendar</groupId>
   		<artifactId>tangocal-location</artifactId>
   		<version>1.0-SNAPSHOT</version>
       <type>ejb</type>
-  	</dependency>
+  	</dependency-->
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>

@@ -21,7 +21,7 @@
       <groupId>com.patternbox.tangocalendar</groupId>
       <artifactId>tangocal-location</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <type>ejb</type>
+      <type>war</type>
     </dependency>
 
     <dependency>
@@ -57,6 +57,12 @@
           <displayName>Tango-Calendar</displayName>
           <version>1.4</version>
           <modules>
+
+            <webModule>
+              <groupId>com.patternbox.tangocalendar</groupId>
+              <artifactId>tangocal-location</artifactId>
+              <contextRoot>/location</contextRoot>
+            </webModule>
 
             <webModule>
               <groupId>com.patternbox.tangocalendar</groupId>

@@ -25,8 +25,6 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.event.domain.model.danceevent;
 
-import static com.patternbox.tangocalendar.location.domain.model.location.Location.FK_LOCATION;
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -36,15 +34,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import com.patternbox.tangocalendar.location.domain.model.location.Location;
+import com.patternbox.tangocalendar.event.domain.model.shared.LocationId;
 import com.patternbox.tangocalendar.types.Entity;
 
 /**
@@ -80,9 +76,8 @@ public abstract class AbstractDanceEvent implements Entity<AbstractDanceEvent, L
 	@Enumerated(EnumType.STRING)
 	private EventType eventType;
 
-	@ManyToOne
-	@JoinColumn(name = FK_LOCATION)
-	private Location location;
+	@NotNull
+	private LocationId locationId;
 
 	public AbstractDanceEvent() {
 		super();
@@ -128,13 +123,6 @@ public abstract class AbstractDanceEvent implements Entity<AbstractDanceEvent, L
 	 */
 	public String getEventName() {
 		return eventName;
-	}
-
-	/**
-	 * @return the location
-	 */
-	public Location getLocation() {
-		return location;
 	}
 
 	/**
