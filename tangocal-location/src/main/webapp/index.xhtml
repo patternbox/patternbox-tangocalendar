@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>#{msgs.title}</title>
+</h:head>
+<h:body>
+	<h1>#{msgs.title}</h1>
+	<br />
+	<h:form>
+
+		<h:panelGrid columns="3">
+ 
+		  Name :
+ 
+		  <h:inputText id="name" value="#{location.name}" size="20"
+				required="true" label="Location Name">
+
+			</h:inputText>
+
+			<h:message for="name" style="color:red" />
+
+		  Home page :
+ 
+		  <h:inputText id="homePage" value="#{location.homePage}" size="40"
+				required="false" label="Location Home Page WWW">
+
+				<f:validator validatorId="HomePageValidator" />
+
+			</h:inputText>
+
+			<h:message for="homePage" style="color:red" />
+
+		</h:panelGrid>
+
+		<h:commandButton value="#{msgs.exec}" action="result" />
+
+	</h:form>
+</h:body>
+</html>
+
+
+
+
