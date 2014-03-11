@@ -33,8 +33,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.patternbox.tangocalendar.core.types.Entity;
 import com.patternbox.tangocalendar.event.domain.model.teacher.Teacher;
-import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -60,7 +60,7 @@ public class EventTemplateItem implements Entity<EventTemplateItem, Long> {
 	private Teacher teacher;
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameIdentityAs(EventTemplateItem other) {
@@ -69,7 +69,7 @@ public class EventTemplateItem implements Entity<EventTemplateItem, Long> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @see com.patternbox.tangocalendar.core.types.Entity#getIdentifer()
 	 */
 	@Override
 	public Long getIdentifer() {

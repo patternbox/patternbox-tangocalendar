@@ -1,4 +1,4 @@
-package com.patternbox.tangocalendar.types;
+package com.patternbox.tangocalendar.core.types;
 
 import java.io.Serializable;
 

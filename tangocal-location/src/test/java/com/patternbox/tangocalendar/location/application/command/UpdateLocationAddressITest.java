@@ -37,11 +37,11 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.patternbox.tangocalendar.command.CdiHandlersProvider;
-import com.patternbox.tangocalendar.command.CommandHandler;
-import com.patternbox.tangocalendar.command.CommandService;
+import com.patternbox.tangocalendar.core.command.CdiHandlersProvider;
+import com.patternbox.tangocalendar.core.command.CommandHandler;
+import com.patternbox.tangocalendar.core.command.CommandService;
+import com.patternbox.tangocalendar.core.producer.LoggerProducer;
 import com.patternbox.tangocalendar.location.application.handler.UpdateLocationAddressCmdHandler;
-import com.patternbox.tangocalendar.producer.LoggerProducer;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

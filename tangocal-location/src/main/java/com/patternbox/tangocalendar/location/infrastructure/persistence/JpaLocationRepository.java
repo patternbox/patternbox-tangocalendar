@@ -36,7 +36,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import com.patternbox.tangocalendar.annotations.Repository;
+import com.patternbox.tangocalendar.core.annotations.Repository;
 import com.patternbox.tangocalendar.location.cdi.LocationManagement;
 import com.patternbox.tangocalendar.location.domain.model.location.Address;
 import com.patternbox.tangocalendar.location.domain.model.location.Location;

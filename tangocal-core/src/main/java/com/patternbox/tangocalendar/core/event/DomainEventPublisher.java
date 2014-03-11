@@ -23,9 +23,34 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
+package com.patternbox.tangocalendar.core.event;
+
+import javax.enterprise.inject.spi.BeanManager;
+
+import org.apache.deltaspike.core.api.provider.BeanManagerProvider;
+
 /**
- * CQRS command handling stuff.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-package com.patternbox.tangocalendar.command;
+public class DomainEventPublisher {
+
+	private final BeanManager beanManager;
+
+	public static DomainEventPublisher getInstance() {
+		return new DomainEventPublisher(BeanManagerProvider.getInstance().getBeanManager());
+	}
+
+	private DomainEventPublisher(BeanManager beanManager) {
+		this.beanManager = beanManager;
+	}
+
+	/**
+	 * Publish a given domain event instance.
+	 * 
+	 * @param domainEvent
+	 *          the domain event to publish
+	 */
+	public <T extends DomainEvent> void publish(T domainEvent) {
+		beanManager.fireEvent(domainEvent);
+	}
+}

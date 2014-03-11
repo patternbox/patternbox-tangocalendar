@@ -23,26 +23,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.command;
-
-import java.io.Serializable;
-
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-
 /**
+ * CDI producer definitions.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Stateless
-public class CommandService implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	@Inject
-	private CdiHandlersProvider handlersProvider;
-
-	public Object execute(Object command) {
-		CommandHandler<Object, Object> handler = handlersProvider.getHandler(command);
-		return handler.handle(command);
-	}
-}
+package com.patternbox.tangocalendar.core.producer;

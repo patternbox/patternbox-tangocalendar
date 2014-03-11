@@ -34,7 +34,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import com.patternbox.tangocalendar.core.types.ValueObject;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -88,7 +88,7 @@ public class Recurrence implements ValueObject<Recurrence> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameValueAs(Recurrence other) {

@@ -31,7 +31,7 @@ import java.util.Date;
 import javax.inject.Inject;
 
 import com.patternbox.tangocal.calendar.domain.model.EventCalendar;
-import com.patternbox.tangocalendar.annotations.DomainService;
+import com.patternbox.tangocalendar.core.annotations.DomainService;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 

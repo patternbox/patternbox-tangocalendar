@@ -23,19 +23,14 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.producer;
+package com.patternbox.tangocalendar.core.annotations;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.lang.annotation.RetentionPolicy;
 
 /**
- * CDI based database producer.
- * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-public class DatabaseProducer {
-
-	// @Produces
-	@PersistenceContext(unitName = "EventPU")
-	private EntityManager em;
+@java.lang.annotation.Documented
+@java.lang.annotation.Retention(RetentionPolicy.RUNTIME)
+public @interface ApplicationService {
 }

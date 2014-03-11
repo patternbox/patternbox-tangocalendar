@@ -23,17 +23,23 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.command;
+package com.patternbox.tangocalendar.core.event;
+
+import javax.enterprise.inject.spi.BeanManager;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
- * The command handler interface. Each command handler implementation is mapped to one specific
- * command implementation.
- * 
- * @param <C>
- *          the command type
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public interface CommandHandler<C, R> {
+public class CdiEnvironment {
 
-	public R handle(C command);
+	public static BeanManager getBeanManager() {
+		try {
+			InitialContext initialContext = new InitialContext();
+			return (BeanManager) initialContext.lookup("java:comp/BeanManager");
+		} catch (NamingException e) {
+			throw new IllegalStateException("Couldn't get BeanManager through JNDI", e);
+		}
+	}
 }

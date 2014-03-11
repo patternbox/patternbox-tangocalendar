@@ -23,25 +23,15 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.annotations;
+package com.patternbox.tangocalendar.core.annotations;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.RetentionPolicy;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-@Documented
-@Inherited
-@Retention(RUNTIME)
-@Target({ ElementType.PACKAGE })
-public @interface DDDLayer {
-
-	public enum DDDLayerType {
-		USER_INTERFACE, APPLICATION_LAYER, DOMAIN_LAYER, INFRASTRUCTUR_LAYER;
-	}
-
-	DDDLayerType value();
+/**
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ */
+@java.lang.annotation.Documented
+@java.lang.annotation.Retention(RetentionPolicy.RUNTIME)
+@javax.inject.Named
+public @interface Finder {
 }

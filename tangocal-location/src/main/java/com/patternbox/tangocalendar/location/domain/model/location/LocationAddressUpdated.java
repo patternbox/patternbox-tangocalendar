@@ -27,7 +27,7 @@ package com.patternbox.tangocalendar.location.domain.model.location;
 
 import java.util.Date;
 
-import com.patternbox.tangocalendar.event.DomainEvent;
+import com.patternbox.tangocalendar.core.event.DomainEvent;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -63,7 +63,7 @@ public class LocationAddressUpdated implements DomainEvent {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.event.DomainEvent#occuredOn()
+	 * @see com.patternbox.tangocalendar.core.event.DomainEvent#occuredOn()
 	 */
 	@Override
 	public Date occuredOn() {

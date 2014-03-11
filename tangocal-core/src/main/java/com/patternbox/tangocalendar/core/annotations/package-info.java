@@ -24,8 +24,6 @@ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
 /**
- * CDI producer definitions.
- * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-package com.patternbox.tangocalendar.producer;
+package com.patternbox.tangocalendar.core.annotations;

@@ -28,6 +28,7 @@ package com.patternbox.tangocalendar.location.infrastructure.service;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.patternbox.tangocalendar.location.domain.model.location.Address;
 import com.patternbox.tangocalendar.location.domain.model.location.Coordinates;
@@ -38,6 +39,7 @@ import com.patternbox.tangocalendar.location.domain.model.location.GeoCodingServ
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
+@Named
 public class GoogleGeoCodingService implements GeoCodingService {
 
 	@Inject

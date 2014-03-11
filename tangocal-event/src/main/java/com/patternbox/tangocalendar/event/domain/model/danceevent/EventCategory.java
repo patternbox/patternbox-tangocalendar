@@ -29,7 +29,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import com.patternbox.tangocalendar.core.types.ValueObject;
 
 /**
  * Event category as DDD value object.
@@ -62,7 +62,7 @@ public class EventCategory implements ValueObject<EventCategory> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameValueAs(EventCategory other) {

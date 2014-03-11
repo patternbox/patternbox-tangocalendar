@@ -32,7 +32,7 @@ import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
-import com.patternbox.tangocalendar.command.CommandService;
+import com.patternbox.tangocalendar.core.command.CommandService;
 import com.patternbox.tangocalendar.location.domain.model.location.GeoCodingService;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationAddressUpdated;
 

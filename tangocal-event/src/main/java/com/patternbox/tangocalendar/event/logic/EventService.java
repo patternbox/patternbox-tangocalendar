@@ -30,7 +30,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.patternbox.tangocalendar.annotations.DomainService;
+import com.patternbox.tangocalendar.core.annotations.DomainService;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.DanceEventRepository;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate;

@@ -8,7 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.patternbox.tangocalendar.command.CommandService;
+import com.patternbox.tangocalendar.core.command.CommandService;
 import com.patternbox.tangocalendar.event.application.command.CreateEventTemplateCommand;
 
 /**

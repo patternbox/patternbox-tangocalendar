@@ -27,7 +27,7 @@ package com.patternbox.tangocalendar.location.domain.model.location;
 
 import javax.persistence.Embeddable;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import com.patternbox.tangocalendar.core.types.ValueObject;
 
 /**
  * Location coordinates DDD value object.
@@ -88,7 +88,7 @@ public class Coordinates implements ValueObject<Coordinates> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameValueAs(Coordinates other) {

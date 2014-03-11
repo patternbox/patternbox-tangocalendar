@@ -29,7 +29,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.patternbox.tangocalendar.types.Entity;
+import com.patternbox.tangocalendar.core.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -51,7 +51,7 @@ public class Teacher implements Entity<Teacher, Long> {
 	private String email;
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameIdentityAs(Teacher other) {
@@ -60,7 +60,7 @@ public class Teacher implements Entity<Teacher, Long> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @see com.patternbox.tangocalendar.core.types.Entity#getIdentifer()
 	 */
 	@Override
 	public Long getIdentifer() {

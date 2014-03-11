@@ -40,8 +40,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PostPersist;
 import javax.persistence.PostUpdate;
 
-import com.patternbox.tangocalendar.event.DomainEventPublisher;
-import com.patternbox.tangocalendar.types.Entity;
+import com.patternbox.tangocalendar.core.event.DomainEventPublisher;
+import com.patternbox.tangocalendar.core.types.Entity;
 
 /**
  * The tango event location entity.
@@ -101,7 +101,7 @@ public class Location implements Entity<Location, Long> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameIdentityAs(Location other) {
@@ -110,7 +110,7 @@ public class Location implements Entity<Location, Long> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @see com.patternbox.tangocalendar.core.types.Entity#getIdentifer()
 	 */
 	@Override
 	public Long getIdentifer() {

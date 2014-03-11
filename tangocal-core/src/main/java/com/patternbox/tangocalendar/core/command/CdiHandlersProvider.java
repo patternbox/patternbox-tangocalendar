@@ -23,7 +23,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.command;
+package com.patternbox.tangocalendar.core.command;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

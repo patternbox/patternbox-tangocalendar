@@ -23,7 +23,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.annotations;
+package com.patternbox.tangocalendar.core.annotations;
 
 import java.lang.annotation.RetentionPolicy;
 
@@ -32,5 +32,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 @java.lang.annotation.Documented
 @java.lang.annotation.Retention(RetentionPolicy.RUNTIME)
-public @interface ApplicationService {
+@javax.inject.Named
+public @interface DomainService {
 }

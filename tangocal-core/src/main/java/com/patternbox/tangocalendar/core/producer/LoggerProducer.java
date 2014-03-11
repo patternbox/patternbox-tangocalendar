@@ -23,34 +23,29 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event;
+package com.patternbox.tangocalendar.core.producer;
 
-import javax.enterprise.inject.spi.BeanManager;
+import java.util.logging.Logger;
 
-import org.apache.deltaspike.core.api.provider.BeanManagerProvider;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
+ * CDI based JDK logger producer.
+ * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public class DomainEventPublisher {
-
-	private final BeanManager beanManager;
-
-	public static DomainEventPublisher getInstance() {
-		return new DomainEventPublisher(BeanManagerProvider.getInstance().getBeanManager());
-	}
-
-	private DomainEventPublisher(BeanManager beanManager) {
-		this.beanManager = beanManager;
-	}
+public class LoggerProducer {
 
 	/**
-	 * Publish a given domain event instance.
+	 * Produces and returns JDK logger instance.
 	 * 
-	 * @param domainEvent
-	 *          the domain event to publish
+	 * @param injectionPoint
+	 *          the injection point to detect the required class name
+	 * @return JDK logger
 	 */
-	public <T extends DomainEvent> void publish(T domainEvent) {
-		beanManager.fireEvent(domainEvent);
+	@Produces
+	Logger produceLogger(InjectionPoint injectionPoint) {
+		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}
 }

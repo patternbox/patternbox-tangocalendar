@@ -41,7 +41,7 @@ import javax.ws.rs.QueryParam;
 
 import com.patternbox.tangocal.calendar.domain.model.EventCalendar;
 import com.patternbox.tangocal.calendar.logic.EventDateService;
-import com.patternbox.tangocalendar.annotations.ApplicationService;
+import com.patternbox.tangocalendar.core.annotations.ApplicationService;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

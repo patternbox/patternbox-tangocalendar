@@ -40,9 +40,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.patternbox.tangocalendar.core.types.Entity;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent;
 import com.patternbox.tangocalendar.event.domain.model.shared.LocationId;
-import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -68,7 +68,7 @@ public class EventTemplate implements Entity<EventTemplate, Long> {
 	private final List<EventTemplateItem> templateItems = new ArrayList<EventTemplateItem>();
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameIdentityAs(EventTemplate other) {
@@ -77,7 +77,7 @@ public class EventTemplate implements Entity<EventTemplate, Long> {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @see com.patternbox.tangocalendar.core.types.Entity#getIdentifer()
 	 */
 	@Override
 	public Long getIdentifer() {

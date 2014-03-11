@@ -40,7 +40,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.TypedQuery;
 
-import com.patternbox.tangocalendar.annotations.Finder;
+import com.patternbox.tangocalendar.core.annotations.Finder;
 import com.patternbox.tangocalendar.event.cdi.EventManagement;
 import com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory;
 

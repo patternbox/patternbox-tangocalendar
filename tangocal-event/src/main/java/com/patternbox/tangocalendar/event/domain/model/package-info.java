@@ -31,6 +31,6 @@ SUCH DAMAGE.
 @DDDLayer(DDDLayerType.DOMAIN_LAYER)
 package com.patternbox.tangocalendar.event.domain.model;
 
-import com.patternbox.tangocalendar.annotations.DDDLayer;
-import com.patternbox.tangocalendar.annotations.DDDLayer.DDDLayerType;
+import com.patternbox.tangocalendar.core.annotations.DDDLayer;
+import com.patternbox.tangocalendar.core.annotations.DDDLayer.DDDLayerType;
 

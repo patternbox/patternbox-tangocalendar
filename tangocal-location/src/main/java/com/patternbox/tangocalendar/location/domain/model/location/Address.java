@@ -27,7 +27,7 @@ package com.patternbox.tangocalendar.location.domain.model.location;
 
 import javax.persistence.Embeddable;
 
-import com.patternbox.tangocalendar.types.ValueObject;
+import com.patternbox.tangocalendar.core.types.ValueObject;
 
 /**
  * The address DDD value object.
@@ -49,7 +49,7 @@ public class Address implements ValueObject<Address> {
 	private String street;
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameValueAs(Address other) {

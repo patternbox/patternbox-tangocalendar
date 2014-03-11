@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.patternbox.tangocalendar.command.CommandHandler;
+import com.patternbox.tangocalendar.core.command.CommandHandler;
 import com.patternbox.tangocalendar.location.application.command.UpdateLocationAddressCommand;
 
 /**
@@ -21,7 +21,7 @@ public class UpdateLocationAddressCmdHandler implements
 	private Logger logger;
 
 	/**
-	 * @see com.patternbox.tangocalendar.command.CommandHandler#handle(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.command.CommandHandler#handle(java.lang.Object)
 	 */
 	@Override
 	public Void handle(UpdateLocationAddressCommand command) {

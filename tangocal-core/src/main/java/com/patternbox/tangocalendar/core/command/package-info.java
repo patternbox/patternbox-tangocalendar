@@ -23,29 +23,9 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.producer;
-
-import java.util.logging.Logger;
-
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-
 /**
- * CDI based JDK logger producer.
+ * CQRS command handling stuff.
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public class LoggerProducer {
-
-	/**
-	 * Produces and returns JDK logger instance.
-	 * 
-	 * @param injectionPoint
-	 *          the injection point to detect the required class name
-	 * @return JDK logger
-	 */
-	@Produces
-	Logger produceLogger(InjectionPoint injectionPoint) {
-		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-	}
-}
+package com.patternbox.tangocalendar.core.command;

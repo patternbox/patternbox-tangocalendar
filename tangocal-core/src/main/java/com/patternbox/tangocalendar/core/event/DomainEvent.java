@@ -23,15 +23,19 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.annotations;
+package com.patternbox.tangocalendar.core.event;
 
-import java.lang.annotation.RetentionPolicy;
+import java.util.Date;
 
 /**
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * DDD domain event interface.
+ * 
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@java.lang.annotation.Documented
-@java.lang.annotation.Retention(RetentionPolicy.RUNTIME)
-@javax.inject.Named
-public @interface DomainService {
+public interface DomainEvent {
+
+	/**
+	 * Returns the domain event occurrence timestamp
+	 */
+	Date occuredOn();
 }

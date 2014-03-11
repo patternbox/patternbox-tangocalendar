@@ -32,7 +32,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import com.patternbox.tangocalendar.command.CdiHandlersProvider;
+import com.patternbox.tangocalendar.core.command.CdiHandlersProvider;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

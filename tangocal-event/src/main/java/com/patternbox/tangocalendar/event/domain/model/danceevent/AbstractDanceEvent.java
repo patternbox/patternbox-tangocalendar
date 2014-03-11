@@ -40,8 +40,8 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.patternbox.tangocalendar.core.types.Entity;
 import com.patternbox.tangocalendar.event.domain.model.shared.LocationId;
-import com.patternbox.tangocalendar.types.Entity;
 
 /**
  * An abstract dance event to define all shared stuff.
@@ -102,7 +102,7 @@ public abstract class AbstractDanceEvent implements Entity<AbstractDanceEvent, L
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#sameIdentityAs(java.lang.Object)
+	 * @see com.patternbox.tangocalendar.core.types.Entity#sameIdentityAs(java.lang.Object)
 	 */
 	@Override
 	public boolean sameIdentityAs(AbstractDanceEvent other) {
@@ -111,7 +111,7 @@ public abstract class AbstractDanceEvent implements Entity<AbstractDanceEvent, L
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.Entity#getIdentifer()
+	 * @see com.patternbox.tangocalendar.core.types.Entity#getIdentifer()
 	 */
 	@Override
 	public Long getIdentifer() {

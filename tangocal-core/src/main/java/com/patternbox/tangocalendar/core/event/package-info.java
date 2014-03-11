@@ -23,19 +23,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.event;
-
-import java.util.Date;
-
 /**
- * DDD domain event interface.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public interface DomainEvent {
-
-	/**
-	 * Returns the domain event occurrence timestamp
-	 */
-	Date occuredOn();
-}
+package com.patternbox.tangocalendar.core.event;

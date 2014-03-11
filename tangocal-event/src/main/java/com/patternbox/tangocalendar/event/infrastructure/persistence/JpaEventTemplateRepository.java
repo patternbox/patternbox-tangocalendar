@@ -30,7 +30,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import com.patternbox.tangocalendar.annotations.Repository;
+import com.patternbox.tangocalendar.core.annotations.Repository;
 import com.patternbox.tangocalendar.event.cdi.EventManagement;
 import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate;
 import com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateRepository;
