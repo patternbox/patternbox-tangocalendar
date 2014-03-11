@@ -37,9 +37,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.patternbox.tangocalendar.annotations.Repository;
+import com.patternbox.tangocalendar.location.cdi.LocationManagement;
 import com.patternbox.tangocalendar.location.domain.model.location.Address;
 import com.patternbox.tangocalendar.location.domain.model.location.Location;
-import com.patternbox.tangocalendar.location.logic.LocationRepository;
+import com.patternbox.tangocalendar.location.domain.model.location.LocationRepository;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
@@ -48,13 +49,14 @@ import com.patternbox.tangocalendar.location.logic.LocationRepository;
 public class JpaLocationRepository implements LocationRepository {
 
 	@Inject
+	@LocationManagement
 	private EntityManager em;
 
 	@Inject
 	private Event<Address> locationAddressUpdated;
 
 	/**
-	 * @see com.patternbox.tangocalendar.location.logic.LocationRepository#storeLocation(com.patternbox.tangocalendar.location.domain.model.location.Location)
+	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#storeLocation(com.patternbox.tangocalendar.location.domain.model.location.Location)
 	 */
 	@Override
 	public void storeLocation(Location location) {
@@ -63,7 +65,7 @@ public class JpaLocationRepository implements LocationRepository {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.location.logic.LocationRepository#findLocation(java.lang.Long)
+	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#findLocation(java.lang.Long)
 	 */
 	@Override
 	public Location findLocation(Long identifier) {
@@ -71,7 +73,7 @@ public class JpaLocationRepository implements LocationRepository {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.location.logic.LocationRepository#findLocation(java.lang.String)
+	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#findLocation(java.lang.String)
 	 */
 	@Override
 	public Location findLocation(String name) {
@@ -81,7 +83,7 @@ public class JpaLocationRepository implements LocationRepository {
 	}
 
 	/**
-	 * @see com.patternbox.tangocalendar.location.logic.LocationRepository#locationNames()
+	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#locationNames()
 	 */
 	@Override
 	public List<String> locationNames() {
