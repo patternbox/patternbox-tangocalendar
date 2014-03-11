@@ -30,19 +30,19 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Unit test for {@link GeoPosition}
+ * Unit test for {@link Coordinates}
  * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public class GeoPositionTest {
+public class CoordinatesTest {
 
 	/**
-	 * Test method for {@link GeoPosition#calcDistanceInKm(GeoPosition)} .
+	 * Test method for {@link Coordinates#calcDistanceInKm(Coordinates)} .
 	 */
 	@Test
 	public void testGetDistanceInKm() {
-		GeoPosition berlin = new GeoPosition(52.5243700, 13.4105300);
-		GeoPosition hamburg = new GeoPosition(53.5500000, 10.0000000);
+		Coordinates berlin = new Coordinates(52.5243700, 13.4105300);
+		Coordinates hamburg = new Coordinates(53.5500000, 10.0000000);
 		double distanceBH = berlin.calcDistanceInKm(hamburg);
 		double distanceHB = hamburg.calcDistanceInKm(berlin);
 		assertEquals("Same Distance: Berlin, Hamburg", distanceBH, distanceHB, 0.01);

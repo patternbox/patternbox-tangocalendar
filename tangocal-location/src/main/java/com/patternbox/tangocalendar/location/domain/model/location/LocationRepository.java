@@ -25,74 +25,41 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.domain.model.location;
 
-import javax.persistence.Embeddable;
-
-import com.patternbox.tangocalendar.types.ValueObject;
+import java.util.List;
 
 /**
- * Geographical position DDD value object.
- * 
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Embeddable
-@SuppressWarnings("serial")
-public class GeoPosition implements ValueObject<GeoPosition> {
+public interface LocationRepository {
 
 	/**
-	 * Earth radius in Kilometers
-	 */
-	private static final double EARTH_RADIUS = 6371.00;
-
-	private Double latitude;
-
-	private Double longitude;
-
-	/**
-	 * Default constructor to satisfy JPA.
-	 */
-	public GeoPosition() {
-		super();
-	}
-
-	/**
-	 * Parameterized constructor.
-	 */
-	public GeoPosition(double latitude, double longitude) {
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
-
-	/**
-	 * Returns the distance between two geographical locations in Kilometers using the Haversine
-	 * Distance Algorithm.
+	 * Store new location instance into database.
 	 * 
-	 * @param geoPos
-	 *          the other GeoPosition
-	 * @return the distance
+	 * @param location
+	 *          the location to store
 	 */
-	public double calcDistanceInKm(GeoPosition geoPos) {
-		double lat1 = this.latitude;
-		double lat2 = geoPos.latitude;
-		double lon1 = this.longitude;
-		double lon2 = geoPos.longitude;
-		double latDistance = toRad(lat2 - lat1);
-		double lonDistance = toRad(lon2 - lon1);
-		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + Math.cos(toRad(lat1))
-				* Math.cos(toRad(lat2)) * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		return EARTH_RADIUS * c;
-	}
-
-	private static Double toRad(Double value) {
-		return value * Math.PI / 180;
-	}
+	public abstract void storeLocation(Location location);
 
 	/**
-	 * @see com.patternbox.tangocalendar.types.ValueObject#sameValueAs(java.lang.Object)
+	 * Returns a location for a given identifier.
+	 * 
+	 * @param identifier
+	 *          the location identifier
+	 * @return the location instance
 	 */
-	@Override
-	public boolean sameValueAs(GeoPosition other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public abstract Location findLocation(Long identifier);
+
+	/**
+	 * Returns a location for a given location name.
+	 * 
+	 * @param name
+	 *          the location name
+	 * @return the location instance
+	 */
+	public abstract Location findLocation(String name);
+
+	/**
+	 * Returns a list of location names.
+	 */
+	public abstract List<String> locationNames();
 }

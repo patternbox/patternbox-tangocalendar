@@ -78,7 +78,7 @@ public class Location implements Entity<Location, Long> {
 	private Address address;
 
 	@Embedded
-	private GeoPosition geoPosition;
+	private Coordinates geoPosition;
 
 	/**
 	 * Default constructor to satisfy JPA.

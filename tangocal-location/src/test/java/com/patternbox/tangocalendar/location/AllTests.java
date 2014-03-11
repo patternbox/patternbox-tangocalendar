@@ -23,45 +23,26 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.logic;
+package com.patternbox.tangocalendar.location;
 
-import java.util.List;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-import com.patternbox.tangocalendar.location.domain.model.location.Location;
+import com.patternbox.tangocalendar.location.application.command.UpdateLocationAddressITest;
+import com.patternbox.tangocalendar.location.domain.model.location.CoordinatesTest;
+import com.patternbox.tangocalendar.location.domain.model.location.LocationTest;
+import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationRepositoryITest;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public interface LocationRepository {
-
-	/**
-	 * Store new location instance into database.
-	 * 
-	 * @param location
-	 *          the location to store
-	 */
-	public abstract void storeLocation(Location location);
-
-	/**
-	 * Returns a location for a given identifier.
-	 * 
-	 * @param identifier
-	 *          the location identifier
-	 * @return the location instance
-	 */
-	public abstract Location findLocation(Long identifier);
-
-	/**
-	 * Returns a location for a given location name.
-	 * 
-	 * @param name
-	 *          the location name
-	 * @return the location instance
-	 */
-	public abstract Location findLocation(String name);
-
-	/**
-	 * Returns a list of location names.
-	 */
-	public abstract List<String> locationNames();
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+// Unit tests
+		CoordinatesTest.class, //
+		LocationTest.class, //
+		// Integration tests
+		LocationRepositoryITest.class, //
+		UpdateLocationAddressITest.class })
+public class AllTests {
 }

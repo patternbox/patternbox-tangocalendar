@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+  xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="EventPU">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <!-- jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source-->
+    <jta-data-source>java:jboss/datasources/TangocalendarDS</jta-data-source>
+    <mapping-file>META-INF/jpa-event-queries.xml</mapping-file>
+    
+    <!--class>com.patternbox.tangocalendar.location.domain.model.location.Location</class-->
+    
+    <class>com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplate</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.eventtemplate.EventTemplateItem</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.MultiEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.SingleEvent</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.danceevent.EventCategory</class>
+    <class>com.patternbox.tangocalendar.event.domain.model.teacher.Teacher</class>
+    
+    <class>com.patternbox.tangocalendar.event.infrastructure.persistence.JpaEventCategoryFinder</class>
+    
+    <properties>
+      <!-- property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" /-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+      <property name="hibernate.max_fetch_depth" value="3" />
+      <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /-->
+      <property name="hibernate.show_sql" value="true" />
+    </properties>
+  </persistence-unit>
+</persistence>   

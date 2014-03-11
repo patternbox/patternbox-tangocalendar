@@ -24,13 +24,8 @@ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
 /**
- * Business logic implementation of location management subsystem.
+ * Domain event listener.
  * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@DDDLayer(DDDLayerType.DOMAIN_LAYER)
-package com.patternbox.tangocalendar.location.logic;
-
-import com.patternbox.tangocalendar.annotations.DDDLayer;
-import com.patternbox.tangocalendar.annotations.DDDLayer.DDDLayerType;
-
+package com.patternbox.tangocalendar.location.application.listener;
