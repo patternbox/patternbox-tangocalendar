@@ -1,0 +1,8 @@
+
+
+/subsystem=datasources/jdbc-driver=mysql:add(driver-module-name=com.mysql,driver-name=mysql,driver-class-name=com.mysql.jdbc.Driver)
+ 
+/subsystem=datasources/data-source=TangocalendarDS:add(jndi-name="java:jboss/datasources/TangocalendarDS", driver-name=mysql, connection-url=jdbc:mysql://localhost/tangocalendar,user-name=tangocalendar,password=tangocalendar)
+
+/subsystem=datasources/data-source=TangocalendarDS:enable
+
