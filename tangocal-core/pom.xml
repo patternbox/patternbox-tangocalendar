@@ -8,7 +8,7 @@
   </parent>
   <artifactId>tangocal-core</artifactId>
   <dependencies>
-    <dependency>
+    <!--dependency>
       <groupId>org.apache.deltaspike.core</groupId>
       <artifactId>deltaspike-core-api</artifactId>
       <version>0.3-incubating</version>
@@ -17,6 +17,6 @@
       <groupId>org.apache.deltaspike.core</groupId>
       <artifactId>deltaspike-core-impl</artifactId>
       <version>0.3-incubating</version>
-    </dependency>
+    </dependency-->
   </dependencies>
 </project>

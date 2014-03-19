@@ -27,7 +27,7 @@ package com.patternbox.tangocalendar.core.event;
 
 import javax.enterprise.inject.spi.BeanManager;
 
-import org.apache.deltaspike.core.api.provider.BeanManagerProvider;
+import com.patternbox.tangocalendar.core.command.BeanManagerProvider;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>

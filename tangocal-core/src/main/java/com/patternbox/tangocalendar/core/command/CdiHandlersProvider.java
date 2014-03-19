@@ -59,10 +59,11 @@ public class CdiHandlersProvider {
 
 	@SuppressWarnings("unchecked")
 	public CommandHandler<Object, Object> getHandler(Object command) {
-		String beanName = handlers.get(command.getClass());
+		// String beanName = handlers.get(command.getClass());
+		String beanName = getBeanName(command);
 		if (beanName == null) {
-			throw new IllegalStateException("No command handler registered for command "
-					+ command.getClass().getName() + " Are you sure your handlers are @Named beans?");
+			throw new IllegalStateException("No command handler for command class '"
+					+ command.getClass().getName() + "' found. Make sure your handlers are @Named beans!");
 		}
 		Set<Bean<?>> beanset = beanManager.getBeans(beanName);
 		if (beanset.size() > 1) {
@@ -73,6 +74,14 @@ public class CdiHandlersProvider {
 		CreationalContext<?> creationalContext = beanManager.createCreationalContext(bean);
 		Object reference = beanManager.getReference(bean, CommandHandler.class, creationalContext);
 		return (CommandHandler<Object, Object>) reference;
+	}
+
+	private String getBeanName(Object command) {
+		String beanName = handlers.get(command.getClass());
+		if (beanName == null) {
+			return handlers.get(command.getClass().getSuperclass());
+		}
+		return beanName;
 	}
 
 	private Class<?> getHandledCommandType(Class<?> clazz) {
