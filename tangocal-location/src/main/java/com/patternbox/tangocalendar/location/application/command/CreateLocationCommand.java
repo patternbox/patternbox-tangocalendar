@@ -13,25 +13,29 @@ import javax.inject.Named;
 @SuppressWarnings("serial")
 public class CreateLocationCommand implements Serializable {
 
-	private final String name;
+	protected String name;
 
-	private final String country;
+	protected String country;
 
-	private final String state;
+	protected String state;
 
-	private final String town;
+	protected String town;
 
-	private final String zipCode;
+	protected String zipCode;
 
-	private final String street;
+	protected String street;
+
+	protected String homePage;
 
 	/**
-	 * @param name
-	 * @param country
-	 * @param state
-	 * @param town
-	 * @param zipCode
-	 * @param street
+	 * Default constructor used by derived sub classes
+	 */
+	protected CreateLocationCommand() {
+		super();
+	}
+
+	/**
+	 * Parameterized constructor.
 	 */
 	public CreateLocationCommand(String name, String country, String state, String town,
 			String zipCode, String street) {
@@ -48,6 +52,13 @@ public class CreateLocationCommand implements Serializable {
 	 */
 	public String getName() {
 		return name;
+	}
+
+	/**
+	 * @return the homePage
+	 */
+	public String getHomePage() {
+		return homePage;
 	}
 
 	/**

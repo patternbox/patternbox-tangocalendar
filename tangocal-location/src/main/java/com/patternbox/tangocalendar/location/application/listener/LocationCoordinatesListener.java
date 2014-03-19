@@ -25,6 +25,8 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.application.listener;
 
+import static javax.enterprise.event.TransactionPhase.AFTER_SUCCESS;
+
 import java.util.logging.Logger;
 
 import javax.ejb.Asynchronous;
@@ -54,7 +56,7 @@ public class LocationCoordinatesListener {
 	private CommandService commandService;
 
 	@Asynchronous
-	public void handle(@Observes LocationAddressUpdated event) {
+	public void handle(@Observes(during = AFTER_SUCCESS) LocationAddressUpdated event) {
 		logger.info("GEO CODING SERVICE:" + geoCodingService);
 		geoCodingService.convert(event.getAddress());
 	}

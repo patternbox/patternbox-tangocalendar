@@ -28,10 +28,10 @@ package com.patternbox.tangocalendar.location;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import com.patternbox.tangocalendar.location.application.LocationManagementITest;
 import com.patternbox.tangocalendar.location.application.command.UpdateLocationAddressITest;
 import com.patternbox.tangocalendar.location.domain.model.location.CoordinatesTest;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationTest;
-import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationRepositoryITest;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
@@ -42,7 +42,7 @@ import com.patternbox.tangocalendar.location.infrastructure.persistence.Location
 		CoordinatesTest.class, //
 		LocationTest.class, //
 		// Integration tests
-		LocationRepositoryITest.class, //
-		UpdateLocationAddressITest.class })
+		UpdateLocationAddressITest.class, //
+		LocationManagementITest.class })
 public class AllTests {
 }

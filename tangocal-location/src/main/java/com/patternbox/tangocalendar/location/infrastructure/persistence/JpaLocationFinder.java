@@ -25,68 +25,50 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.infrastructure.persistence;
 
-import static com.patternbox.tangocalendar.location.domain.model.location.Location.COL_NAME;
-import static com.patternbox.tangocalendar.location.domain.model.location.Location.QRY_LOCATION_BY_NAME;
 import static com.patternbox.tangocalendar.location.domain.model.location.Location.QRY_LOCATION_NAMES;
 
 import java.util.List;
 
-import javax.enterprise.event.Event;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Query;
 
-import com.patternbox.tangocalendar.core.annotations.Repository;
+import com.patternbox.tangocalendar.core.annotations.Finder;
 import com.patternbox.tangocalendar.location.cdi.LocationManagement;
-import com.patternbox.tangocalendar.location.domain.model.location.Address;
-import com.patternbox.tangocalendar.location.domain.model.location.Location;
-import com.patternbox.tangocalendar.location.domain.model.location.LocationRepository;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
  */
-@Repository
-public class JpaLocationFinder implements LocationRepository {
+@Finder
+@MappedSuperclass
+@ApplicationScoped
+@NamedQueries({
+		@NamedQuery(name = "JpaLocationFinder.findAll", query = "SELECT NEW com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto("
+				+ "l.identifier, l.name, l.address.country, l.address.town, l.address.zipCode, l.address.street) FROM Location l "),
+		@NamedQuery(name = "JpaLocationFinder.find", query = "SELECT NEW com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto("
+				+ "l.identifier, l.name, l.address.country, l.address.town, l.address.zipCode, l.address.street) FROM Location l WHERE l.id = :id") })
+public class JpaLocationFinder {
 
 	@Inject
 	@LocationManagement
 	private EntityManager em;
 
-	@Inject
-	private Event<Address> locationAddressUpdated;
-
-	/**
-	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#storeLocation(com.patternbox.tangocalendar.location.domain.model.location.Location)
-	 */
-	@Override
-	public void storeLocation(Location location) {
-		em.persist(location);
-		locationAddressUpdated.fire(new Address());
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#findLocation(java.lang.Long)
-	 */
-	@Override
-	public Location findLocation(Long identifier) {
-		return em.find(Location.class, identifier);
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#findLocation(java.lang.String)
-	 */
-	@Override
-	public Location findLocation(String name) {
-		TypedQuery<Location> query = em.createNamedQuery(QRY_LOCATION_BY_NAME, Location.class);
-		query.setParameter(COL_NAME, name);
-		return query.getSingleResult();
-	}
-
-	/**
-	 * @see com.patternbox.tangocalendar.location.domain.model.location.LocationRepository#locationNames()
-	 */
-	@Override
 	public List<String> locationNames() {
 		return em.createNamedQuery(QRY_LOCATION_NAMES, String.class).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<LocationDto> findLocations() {
+		Query qry = em.createNamedQuery("JpaLocationFinder.findAll");
+		return qry.getResultList();
+	}
+
+	public LocationDto findLocation(Long id) {
+		Query qry = em.createNamedQuery("JpaLocationFinder.find").setParameter("id", id);
+		return (LocationDto) qry.getSingleResult();
 	}
 }

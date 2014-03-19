@@ -33,17 +33,16 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import java.lang.reflect.Field;
-
 import javax.enterprise.inject.spi.BeanManager;
 
-import org.apache.deltaspike.core.api.provider.BeanManagerProvider;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import com.patternbox.tangocalendar.core.command.BeanManagerProvider;
 
 /**
  * Unit test for {@link Location}
@@ -63,9 +62,10 @@ public class LocationTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		BeanManagerProvider bmpMock = mock(BeanManagerProvider.class);
-		Field bmpField = BeanManagerProvider.class.getDeclaredField("bmpSingleton");
-		bmpField.setAccessible(true);
-		bmpField.set(null, bmpMock);
+		// Field bmpField = BeanManagerProvider.class.getDeclaredField("bmpSingleton");
+		// bmpField.setAccessible(true);
+		// bmpField.set(null, bmpMock);
+		BeanManagerProvider.setBeanManagerProvider(bmpMock);
 		doReturn(beanManagerMock).when(bmpMock).getBeanManager();
 	}
 

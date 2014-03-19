@@ -49,6 +49,24 @@ public class Address implements ValueObject<Address> {
 	private String street;
 
 	/**
+	 * Default constructor to satisfy JPA.
+	 */
+	public Address() {
+		super();
+	}
+
+	/**
+	 * Parameterized constructor.
+	 */
+	public Address(String country, String state, String town, String zipCode, String street) {
+		this.country = country;
+		this.state = state;
+		this.town = town;
+		this.zipCode = zipCode;
+		this.street = street;
+	}
+
+	/**
 	 * @see com.patternbox.tangocalendar.core.types.ValueObject#sameValueAs(java.lang.Object)
 	 */
 	@Override

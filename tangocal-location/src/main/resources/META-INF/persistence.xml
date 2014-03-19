@@ -8,6 +8,8 @@
     
     <class>com.patternbox.tangocalendar.location.domain.model.location.Location</class>
     
+    <class>com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder</class>
+    
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
       <property name="hibernate.max_fetch_depth" value="3" />

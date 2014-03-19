@@ -23,44 +23,43 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.application.command;
+package com.patternbox.tangocalendar.location.interaction.web.beans;
 
-import static org.junit.Assert.assertEquals;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-import javax.ejb.EJB;
-
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import com.patternbox.tangocalendar.core.command.CommandService;
-import com.patternbox.tangocalendar.location.application.handler.UpdateLocationAddressCmdHandler;
+import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder;
+import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@RunWith(Arquillian.class)
-public class UpdateLocationAddressITest {
+@Named("showLocation")
+@RequestScoped
+public class ShowLocationBean {
 
-	@Deployment
-	public static JavaArchive createDeployment() {
-		return ShrinkWrap.create(JavaArchive.class, "test.jar")
-				.addPackages(true /* recursive */, "com.patternbox.tangocalendar.core")
-				.addClasses(UpdateLocationAddressCmdHandler.class, UpdateLocationAddressCommand.class)
-				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+	@Inject
+	private JpaLocationFinder locationFinder;
+
+	private LocationDto locationDto;
+
+	/**
+	 * Find and cache location DTO.
+	 */
+	@PostConstruct
+	private void onPostConstruct() {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		String id = fc.getExternalContext().getRequestParameterMap().get("id");
+		locationDto = locationFinder.findLocation(Long.parseLong(id));
 	}
 
-	@EJB
-	CommandService cmdService;
-
-	@Test
-	public void update_location_address() {
-		UpdateLocationAddressCommand cmd = new UpdateLocationAddressCommand();
-		cmdService.execute(cmd);
-		assertEquals("Hello, Earthling!", "Hello, Earthling!");
+	/**
+	 * Return location data.
+	 */
+	LocationDto getData() {
+		return locationDto;
 	}
 }
