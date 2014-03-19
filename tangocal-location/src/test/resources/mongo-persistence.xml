@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+  xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="LocationPU">
+    <!-- Use Hibernate OGM provider: configuration will be transparent -->
+    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+  
+    <class>com.patternbox.tangocalendar.location.domain.model.location.Location</class>
+  
+    <properties>
+      <property name="hibernate.ogm.datastore.provider" value="MONGODB" />
+      <property name="hibernate.ogm.mongodb.host" value="127.0.0.1" />
+      <property name="hibernate.ogm.mongodb.port" value="27017" />
+      <property name="hibernate.ogm.mongodb.database" value="ogmdemo" />
+      <property name="jboss.as.jpa.adapterModule" value="org.jboss.as.jpa.hibernate:4" />
+    </properties>
+  
+  </persistence-unit>
+</persistence>
+
