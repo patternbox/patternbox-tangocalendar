@@ -44,7 +44,7 @@ public class Address implements ValueObject<Address> {
 
 	private String town;
 
-	private String zipCode;
+	private String postalCode;
 
 	private String street;
 
@@ -58,11 +58,11 @@ public class Address implements ValueObject<Address> {
 	/**
 	 * Parameterized constructor.
 	 */
-	public Address(String country, String state, String town, String zipCode, String street) {
+	public Address(String country, String state, String town, String postalCode, String street) {
 		this.country = country;
 		this.state = state;
 		this.town = town;
-		this.zipCode = zipCode;
+		this.postalCode = postalCode;
 		this.street = street;
 	}
 

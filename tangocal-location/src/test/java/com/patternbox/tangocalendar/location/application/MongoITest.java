@@ -47,6 +47,7 @@ import org.junit.runner.RunWith;
 
 import com.patternbox.tangocalendar.core.command.CommandService;
 import com.patternbox.tangocalendar.location.application.command.CreateLocationCommand;
+import com.patternbox.tangocalendar.location.application.data.AddressData;
 import com.patternbox.tangocalendar.location.domain.model.location.Location;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationAddressUpdated;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationRepository;
@@ -99,9 +100,8 @@ public class MongoITest {
 	@InSequence(1)
 	public void testCreateLocation() {
 		final String name = "My Location-2";
-		// final Address address = new Address("DE", "Berlin", "Berlin", "12345", "My Street 12");
-		CreateLocationCommand cmd = new CreateLocationCommand(name, "DE", "Berlin", "Berlin", "12345",
-				"My Street 12");
+		final AddressData address = new AddressData("DE", "Berlin", "Berlin", "12345", "My Street 12");
+		CreateLocationCommand cmd = new CreateLocationCommand(name, address);
 		Long id = (Long) cmdService.execute(cmd);
 		assertNotNull("Location identifier is null", id);
 		Location location = repository.findLocation(id);

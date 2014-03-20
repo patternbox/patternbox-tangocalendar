@@ -38,6 +38,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Query;
 
 import com.patternbox.tangocalendar.core.annotations.Finder;
+import com.patternbox.tangocalendar.location.application.data.LocationData;
 import com.patternbox.tangocalendar.location.cdi.LocationManagement;
 
 /**
@@ -47,11 +48,14 @@ import com.patternbox.tangocalendar.location.cdi.LocationManagement;
 @MappedSuperclass
 @ApplicationScoped
 @NamedQueries({
-		@NamedQuery(name = "JpaLocationFinder.findAll", query = "SELECT NEW com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto("
-				+ "l.identifier, l.name, l.address.country, l.address.town, l.address.zipCode, l.address.street) FROM Location l "),
-		@NamedQuery(name = "JpaLocationFinder.find", query = "SELECT NEW com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto("
-				+ "l.identifier, l.name, l.address.country, l.address.town, l.address.zipCode, l.address.street) FROM Location l WHERE l.id = :id") })
+		@NamedQuery(name = "JpaLocationFinder.findAll", query = JpaLocationFinder.QRY_ROOT),
+		@NamedQuery(name = "JpaLocationFinder.find", query = JpaLocationFinder.QRY_ROOT
+				+ "WHERE l.id = :id") })
 public class JpaLocationFinder {
+
+	static final String QRY_ROOT = "SELECT NEW com.patternbox.tangocalendar.location.application.data.LocationData"
+			+ "(l.identifier, l.name, l.address.country, l.address.state, l.address.town, l.address.postalCode, l.address.street) "
+			+ "FROM Location l ";
 
 	@Inject
 	@LocationManagement
@@ -62,13 +66,13 @@ public class JpaLocationFinder {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<LocationDto> findLocations() {
+	public List<LocationData> findLocations() {
 		Query qry = em.createNamedQuery("JpaLocationFinder.findAll");
 		return qry.getResultList();
 	}
 
-	public LocationDto findLocation(Long id) {
+	public LocationData findLocation(Long id) {
 		Query qry = em.createNamedQuery("JpaLocationFinder.find").setParameter("id", id);
-		return (LocationDto) qry.getSingleResult();
+		return (LocationData) qry.getSingleResult();
 	}
 }

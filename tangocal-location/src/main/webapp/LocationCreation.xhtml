@@ -23,16 +23,16 @@
 
 			<h:message for="name" style="color:red" />
 
-		  Home page :
+		  Town :
  
-		  <h:inputText id="homePage" value="#{createLocation.homePage}" size="40"
-				required="false" label="Location Home Page WWW">
+		  <h:inputText id="town" value="#{createLocation.address.town}" size="40"
+				required="false" label="Location Address Town">
 
-				<f:validator validatorId="HomePageValidator" />
+				<!-- f:validator validatorId="HomePageValidator" /-->
 
 			</h:inputText>
 
-			<h:message for="homePage" style="color:red" />
+			<h:message for="town" style="color:red" />
 
 		</h:panelGrid>
 

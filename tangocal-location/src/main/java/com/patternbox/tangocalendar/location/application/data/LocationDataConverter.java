@@ -23,74 +23,25 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.infrastructure.persistence;
+package com.patternbox.tangocalendar.location.application.data;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+
+import com.patternbox.tangocalendar.location.domain.model.location.Address;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-public class LocationDto {
-
-	private final Long id;
-
-	private final String name;
-
-	private final String country;
-
-	private final String town;
-
-	private final String zipCode;
-
-	private final String street;
-
-	public LocationDto(Long id, String name, String country, String town, String zipCode,
-			String street) {
-		this.id = id;
-		this.name = name;
-		this.country = country;
-		this.town = town;
-		this.zipCode = zipCode;
-		this.street = street;
-	}
+@Named
+@ApplicationScoped
+public class LocationDataConverter {
 
 	/**
-	 * @return the id
+	 * Create and return address value object from address data.
 	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
-
-	/**
-	 * @return the town
-	 */
-	public String getTown() {
-		return town;
-	}
-
-	/**
-	 * @return the zipCode
-	 */
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	/**
-	 * @return the street
-	 */
-	public String getStreet() {
-		return street;
+	public Address convertAddress(AddressData address) {
+		return new Address(address.getCountry(), address.getState(), address.getTown(),
+				address.getPostalCode(), address.getStreet());
 	}
 }

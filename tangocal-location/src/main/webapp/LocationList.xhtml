@@ -22,24 +22,24 @@
  
     			<h:column>
     				<f:facet name="header">Location ID</f:facet>
-    				#{l.id}
+    				#{l.identifier}
     			</h:column>
  
     			<h:column>
     				<f:facet name="header">Location Name</f:facet>
     				<h:link value="#{l.name}" outcome="LocationDetails">
-    					<f:param name="id" value="#{l.id}" />
+    					<f:param name="id" value="#{l.identifier}" />
     				</h:link>
     			</h:column>
  
     			<h:column>
     				<f:facet name="header">Town</f:facet>
-    				#{l.town}
+    				#{l.address.town}
     			</h:column>
  
     			<h:column>
     				<f:facet name="header">Street</f:facet>
-    				#{l.street}
+    				#{l.address.street}
     			</h:column>
  
     		</h:dataTable>

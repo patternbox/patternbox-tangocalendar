@@ -23,7 +23,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.application;
+package com.patternbox.tangocalendar.location;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -47,13 +47,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.patternbox.tangocalendar.core.command.CommandService;
-import com.patternbox.tangocalendar.location.application.command.CreateLocationCommand;
-import com.patternbox.tangocalendar.location.domain.model.location.Address;
+import com.patternbox.tangocalendar.location.application.DomainEventsListener;
+import com.patternbox.tangocalendar.location.application.data.LocationData;
 import com.patternbox.tangocalendar.location.domain.model.location.Location;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationAddressUpdated;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationRepository;
 import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder;
-import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto;
 import com.patternbox.tangocalendar.location.interaction.web.beans.CreateLocationBean;
 
 /**
@@ -63,9 +62,6 @@ import com.patternbox.tangocalendar.location.interaction.web.beans.CreateLocatio
 public class LocationManagementITest {
 
 	private static final String LOCATION_NAME = "My Location";
-
-	private static final Address LOCATION_ADDR = new Address("DE", "Berlin", "Berlin", "12345",
-			"My Street 12");
 
 	@EJB
 	private CommandService cmdService;
@@ -111,37 +107,25 @@ public class LocationManagementITest {
 	}
 
 	@Test
-	@Ignore
-	@InSequence(1)
-	public void testCreateLocation() {
-		CreateLocationCommand cmd = new CreateLocationCommand(LOCATION_NAME, "DE", "Berlin", "Berlin",
-				"12345", "My Street 12");
-		Long id = (Long) cmdService.execute(cmd);
-		assertNotNull("Location identifier is null", id);
-		Location location = repository.findLocation(id);
-		assertNotNull("Location is null", location);
-	}
-
-	@Test
 	@InSequence(2)
 	public void testCreateLocation2() {
-		assertNull("Location identifier is null", createLocationBean.getLocationId());
+		assertNull("Location identifier is null", createLocationBean.getIdentifier());
 		createLocationBean.setName(LOCATION_NAME);
-		createLocationBean.setCountry("DE");
-		createLocationBean.setState("Berlin");
-		createLocationBean.setTown("Berlin");
-		createLocationBean.setZipCode("12345");
-		createLocationBean.setStreet("My Stree 12");
+		createLocationBean.getAddress().setCountry("DE");
+		createLocationBean.getAddress().setState("Berlin");
+		createLocationBean.getAddress().setTown("Berlin");
+		createLocationBean.getAddress().setPostalCode("12345");
+		createLocationBean.getAddress().setStreet("My Stree 12");
 		createLocationBean.submit();
-		assertNotNull("Location id is null", createLocationBean.getLocationId());
-		Location location = repository.findLocation(createLocationBean.getLocationId());
+		assertNotNull("Location id is null", createLocationBean.getIdentifier());
+		Location location = repository.findLocation(createLocationBean.getIdentifier());
 		assertNotNull("Location is null", location);
 	}
 
 	@Test
 	@InSequence(3)
 	public void testFindLocations() {
-		List<LocationDto> dtos = locationFinder.findLocations();
+		List<LocationData> dtos = locationFinder.findLocations();
 		assertNotNull(dtos);
 		assertFalse(dtos.isEmpty());
 	}

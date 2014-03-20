@@ -23,14 +23,42 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-/**
- * Managed beans of location management subsystem.
- * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
- */
-@DDDLayer(DDDLayerType.USER_INTERFACE)
 package com.patternbox.tangocalendar.location.interaction.web.beans;
 
-import com.patternbox.tangocalendar.core.annotations.DDDLayer;
-import com.patternbox.tangocalendar.core.annotations.DDDLayer.DDDLayerType;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import com.patternbox.tangocalendar.location.application.data.LocationData;
+import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder;
+
+/**
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
+ */
+@Named("locations")
+@RequestScoped
+public class LocationListBean {
+
+	@Inject
+	private JpaLocationFinder locationFinder;
+
+	private List<LocationData> resultList;
+
+	/**
+	 * Find and cache location DTOs to avoid multiple database requests.
+	 */
+	@PostConstruct
+	private void onPostConstruct() {
+		resultList = locationFinder.findLocations();
+	}
+
+	/**
+	 * Return location DTO list.
+	 */
+	List<LocationData> getList() {
+		return resultList;
+	}
+}

@@ -1,9 +1,8 @@
 package com.patternbox.tangocalendar.location.application.command;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import javax.inject.Named;
+
+import com.patternbox.tangocalendar.location.application.data.AddressData;
 
 /**
  * ...
@@ -11,49 +10,23 @@ import javax.inject.Named;
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @Named
-@SuppressWarnings("serial")
-public class UpdateLocationAddressCommand implements Serializable {
+public class UpdateLocationAddressCommand extends AddressData {
 
-	private Date startDate;
-
-	private Date endDate;
-
-	private long locationId;
+	private Long locationId;
 
 	/**
-	 * @return the startDate
+	 * Parameterized constructor used for field initialization.
 	 */
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	/**
-	 * @param startDate
-	 *          the startDate to set
-	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	/**
-	 * @return the endDate
-	 */
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	/**
-	 * @param endDate
-	 *          the endDate to set
-	 */
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public UpdateLocationAddressCommand(String country, String state, String town, String postalCode,
+			String street, Long locationId) {
+		super(country, state, town, postalCode, street);
+		this.setLocationId(locationId);
 	}
 
 	/**
 	 * @return the locationId
 	 */
-	public long getLocationId() {
+	public Long getLocationId() {
 		return locationId;
 	}
 
@@ -61,7 +34,7 @@ public class UpdateLocationAddressCommand implements Serializable {
 	 * @param locationId
 	 *          the locationId to set
 	 */
-	public void setLocationId(long locationId) {
+	public void setLocationId(Long locationId) {
 		this.locationId = locationId;
 	}
 }

@@ -31,20 +31,20 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.patternbox.tangocalendar.location.application.data.LocationData;
 import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder;
-import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Named("showLocation")
+@Named("locationDetails")
 @RequestScoped
-public class ShowLocationBean {
+public class LocationDetailsBean {
 
 	@Inject
 	private JpaLocationFinder locationFinder;
 
-	private LocationDto locationDto;
+	private LocationData locationDto;
 
 	/**
 	 * Find and cache location DTO.
@@ -59,7 +59,7 @@ public class ShowLocationBean {
 	/**
 	 * Return location data.
 	 */
-	LocationDto getData() {
+	LocationData getData() {
 		return locationDto;
 	}
 }

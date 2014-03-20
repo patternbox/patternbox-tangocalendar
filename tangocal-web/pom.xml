@@ -11,6 +11,13 @@
   <dependencies>
     <dependency>
       <groupId>com.patternbox.tangocalendar</groupId>
+      <artifactId>tangocal-core</artifactId>
+      <type>ejb</type>
+      <scope>provided</scope>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.patternbox.tangocalendar</groupId>
       <artifactId>tangocal-event</artifactId>
       <type>ejb</type>
       <scope>provided</scope>

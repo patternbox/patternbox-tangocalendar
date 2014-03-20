@@ -23,42 +23,72 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
-package com.patternbox.tangocalendar.location.interaction.web.beans;
-
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocationFinder;
-import com.patternbox.tangocalendar.location.infrastructure.persistence.LocationDto;
+package com.patternbox.tangocalendar.location.application.data;
 
 /**
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@Named("locations")
-@RequestScoped
-public class LocationsBean {
+public class LocationData {
 
-	@Inject
-	private JpaLocationFinder locationFinder;
+	protected Long identifier;
 
-	private List<LocationDto> resultList;
+	protected String name;
+
+	protected AddressData address;
 
 	/**
-	 * Find and cache location DTOs to avoid multiple database requests.
+	 * Default constructor to satisfy web container
 	 */
-	@PostConstruct
-	private void onPostConstruct() {
-		resultList = locationFinder.findLocations();
+	public LocationData() {
+		super();
 	}
 
 	/**
-	 * Return location DTO list.
+	 * Parameterized constructor used for field initialization.
 	 */
-	List<LocationDto> getList() {
-		return resultList;
+	public LocationData(Long identifier, String name, String country, String state, String town,
+			String postalCode, String street) {
+		this.identifier = identifier;
+		this.name = name;
+		this.address = new AddressData(country, state, town, postalCode, street);
+	}
+
+	/**
+	 * Parameterized constructor used for field initialization.
+	 */
+	public LocationData(Long identifier, String name, AddressData address) {
+		this.identifier = identifier;
+		this.name = name;
+		this.address = address;
+	}
+
+	/**
+	 * Parameterized constructor used for field initialization.
+	 */
+	public LocationData(String name, AddressData address) {
+		this.identifier = null;
+		this.name = name;
+		this.address = address;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @return the address
+	 */
+	public AddressData getAddress() {
+		return address;
 	}
 }

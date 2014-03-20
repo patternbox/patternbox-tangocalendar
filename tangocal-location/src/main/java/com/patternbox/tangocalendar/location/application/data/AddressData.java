@@ -23,14 +23,69 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
  ******************************************************************************/
+package com.patternbox.tangocalendar.location.application.data;
+
+
 /**
- * Managed beans of location management subsystem.
+ * Data object to transport address data across layers.
  * 
- * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox<a>
+ * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
-@DDDLayer(DDDLayerType.USER_INTERFACE)
-package com.patternbox.tangocalendar.location.interaction.web.beans;
+public class AddressData {
 
-import com.patternbox.tangocalendar.core.annotations.DDDLayer;
-import com.patternbox.tangocalendar.core.annotations.DDDLayer.DDDLayerType;
+	protected String country;
 
+	protected String state;
+
+	protected String town;
+
+	protected String postalCode;
+
+	protected String street;
+
+	/**
+	 * Parameterized constructor.
+	 */
+	public AddressData(String country, String state, String town, String postalCode, String street) {
+		this.country = country;
+		this.state = state;
+		this.town = town;
+		this.postalCode = postalCode;
+		this.street = street;
+	}
+
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * @return the state
+	 */
+	public String getState() {
+		return state;
+	}
+
+	/**
+	 * @return the town
+	 */
+	public String getTown() {
+		return town;
+	}
+
+	/**
+	 * @return the postalCode
+	 */
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	/**
+	 * @return the street
+	 */
+	public String getStreet() {
+		return street;
+	}
+}

@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import com.patternbox.tangocalendar.core.command.CommandHandler;
 import com.patternbox.tangocalendar.location.application.command.CreateLocationCommand;
+import com.patternbox.tangocalendar.location.application.data.LocationDataConverter;
 import com.patternbox.tangocalendar.location.domain.model.location.Address;
 import com.patternbox.tangocalendar.location.domain.model.location.Location;
 import com.patternbox.tangocalendar.location.domain.model.location.LocationRepository;
@@ -23,6 +24,9 @@ public class CreateLocationCmdHandler implements CommandHandler<CreateLocationCo
 	private Logger logger;
 
 	@Inject
+	private LocationDataConverter converter;
+
+	@Inject
 	private LocationRepository repository;
 
 	/**
@@ -31,10 +35,11 @@ public class CreateLocationCmdHandler implements CommandHandler<CreateLocationCo
 	@Override
 	public Long handle(CreateLocationCommand command) {
 		Location location = new Location(command.getName());
-		Address addr = new Address(command.getCountry(), command.getState(), command.getTown(),
-				command.getZipCode(), command.getStreet());
+		Address addr = converter.convertAddress(command.getAddress());
 		location.updateAddress(addr);
 		repository.storeLocation(location);
+		logger.info("New Location created, id: " + location.getIdentifer() + ", name: "
+				+ command.getName());
 		return location.getIdentifer();
 	}
 }
