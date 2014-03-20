@@ -1,3 +1,5 @@
 rem call mvn eclipse:clean
 
-rd /S /Q .settings 
+del /S /Q .settings 
+
+pause
