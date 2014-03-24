@@ -46,6 +46,8 @@ public class LocationDetailsBean {
 
 	private LocationData locationDto;
 
+	private String action;
+
 	/**
 	 * Find and cache location DTO.
 	 */
@@ -61,5 +63,13 @@ public class LocationDetailsBean {
 	 */
 	LocationData getData() {
 		return locationDto;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public String getAction() {
+		return action;
 	}
 }

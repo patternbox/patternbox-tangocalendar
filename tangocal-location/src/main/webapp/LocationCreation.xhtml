@@ -23,19 +23,14 @@
 
 			<h:message for="name" style="color:red" />
 
-		  Town :
- 
-		  <h:inputText id="town" value="#{createLocation.address.town}" size="40"
-				required="false" label="Location Address Town">
-
-				<!-- f:validator validatorId="HomePageValidator" /-->
-
-			</h:inputText>
-
-			<h:message for="town" style="color:red" />
-
 		</h:panelGrid>
 
+		<ui:insert name="LocationAddress" >
+			<ui:include src="/template/LocationAddress.xhtml">
+				<ui:param name="address" value="#{createLocation.address}" />
+			</ui:include>
+		</ui:insert>
+		
 		<h:commandButton value="#{msgs.exec}" action="#{createLocation.submit}" />
 
 	</h:form>

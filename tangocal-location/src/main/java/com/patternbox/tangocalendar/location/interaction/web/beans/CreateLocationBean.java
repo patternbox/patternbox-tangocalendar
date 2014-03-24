@@ -37,7 +37,6 @@ public class CreateLocationBean extends CreateLocationCommand implements Seriali
 	 */
 	public String submit() {
 		identifier = (Long) commandService.execute(this);
-		// return "success";
 		return "LocationDetails.xhtml?faces-redirect=true&id=" + identifier;
 	}
 

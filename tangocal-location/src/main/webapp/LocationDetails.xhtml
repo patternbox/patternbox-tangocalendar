@@ -12,7 +12,7 @@
 	<br />
 	<h:form>
 
-		<h:panelGrid columns="3">
+		<h:panelGrid columns="3" id="includeContainer">
  
 		  Name :
  
@@ -25,6 +25,17 @@
 
 		</h:panelGrid>
 
+		<ui:insert name="LocationAddress">
+			<ui:include src="/template/LocationAddress.xhtml" />
+		</ui:insert>
+		
+	  <h:commandButton value="Add" update="includeContainer">
+	    <f:setPropertyActionListener value="add" target="#{locationDetails.action}"/>
+	  </h:commandButton>
+	  <h:commandButton value="Update" update="includeContainer">
+	    <f:setPropertyActionListener value="update" target="#{locationDetails.action}"/>
+	  </h:commandButton>
+		
 		<h:commandButton value="#{msgs.exec}" action="#{locationDetails.submit}" />
 
 	</h:form>

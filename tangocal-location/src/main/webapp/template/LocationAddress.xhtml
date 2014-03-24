@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+    <body>
+	    <ui:composition>
+ 
+				<h:panelGrid columns="3">
+		 
+				  Town :
+		 
+				  <h:inputText id="town" value="#{address.town}" size="60"
+						required="false" label="Location Address Town">
+		
+						<!-- f:validator validatorId="HomePageValidator" /-->
+		
+					</h:inputText>
+		
+					<h:message for="town" style="color:red" />
+
+				  Street :
+		 
+				  <h:inputText id="street" value="#{address.street}" size="60"
+						required="false" label="Location Address Street">
+		
+					</h:inputText>
+		
+					<h:message for="street" style="color:red" />
+		
+				</h:panelGrid>
+ 
+	    </ui:composition>
+    </body>
+</html>
