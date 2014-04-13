@@ -25,9 +25,10 @@ SUCH DAMAGE.
  ******************************************************************************/
 package com.patternbox.tangocalendar.location.interaction.web.beans;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -38,8 +39,12 @@ import com.patternbox.tangocalendar.location.infrastructure.persistence.JpaLocat
  * @author <a href='http://www.patternbox.com'>D. Ehms, Patternbox</a>
  */
 @Named("locationDetails")
-@RequestScoped
-public class LocationDetailsBean {
+// @RequestScoped
+// @ConversationScoped
+@SessionScoped
+public class LocationDetailsBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private JpaLocationFinder locationFinder;
@@ -48,20 +53,28 @@ public class LocationDetailsBean {
 
 	private String action;
 
+	// @ManagedProperty(value = "#{param.id}")
+	private Long locationId;
+
 	/**
 	 * Find and cache location DTO.
 	 */
 	@PostConstruct
 	private void onPostConstruct() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		String id = fc.getExternalContext().getRequestParameterMap().get("id");
-		locationDto = locationFinder.findLocation(Long.parseLong(id));
+		// FacesContext fc = FacesContext.getCurrentInstance();
+		// String id = fc.getExternalContext().getRequestParameterMap().get("id");
+		// if (id != null) {
+		// locationDto = locationFinder.findLocation(Long.parseLong(id));
+		// }
 	}
 
 	/**
 	 * Return location data.
 	 */
 	LocationData getData() {
+		if (locationDto == null && locationId != null) {
+			locationDto = locationFinder.findLocation(locationId);
+		}
 		return locationDto;
 	}
 
@@ -71,5 +84,20 @@ public class LocationDetailsBean {
 
 	public String getAction() {
 		return action;
+	}
+
+	/**
+	 * Return the locationId
+	 */
+	public Long getLocationId() {
+		return locationId;
+	}
+
+	/**
+	 * @param locationId
+	 *          the locationId to set
+	 */
+	public void setLocationId(Long locationId) {
+		this.locationId = locationId;
 	}
 }

@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jstl/core" 
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
@@ -8,32 +9,36 @@
 	<title>#{msgs.title}</title>
 </h:head>
 <h:body>
+
+	<f:metadata>  
+	  <f:viewParam name="id" value="#{locationDetails.locationId}" /> 
+	</f:metadata>
+	
 	<h1>#{msgs.title}</h1>
 	<br />
 	<h:form>
-
+	
 		<h:panelGrid columns="3" id="includeContainer">
  
 		  Name :
  
 		  <h:inputText id="name" value="#{locationDetails.data.name}" size="20"
-				required="true" label="Location Name">
-
-			</h:inputText>
+				required="true" label="Location Name" />
 
 			<h:message for="name" style="color:red" />
 
 		</h:panelGrid>
 
-		<ui:insert name="LocationAddress">
-			<ui:include src="/template/LocationAddress.xhtml" />
-		</ui:insert>
+		<c:if test="#{locationDetails.action == 'edit'}">
+			<ui:insert name="LocationAddress">
+				<ui:include src="/template/LocationAddress.xhtml">
+					<ui:param name="address" value="#{locationDetails.data.address}" />
+				</ui:include>
+			</ui:insert>
+		</c:if>
 		
-	  <h:commandButton value="Add" update="includeContainer">
-	    <f:setPropertyActionListener value="add" target="#{locationDetails.action}"/>
-	  </h:commandButton>
-	  <h:commandButton value="Update" update="includeContainer">
-	    <f:setPropertyActionListener value="update" target="#{locationDetails.action}"/>
+	  <h:commandButton value="Edit Address" update="includeContainer">
+	    <f:setPropertyActionListener target="#{locationDetails.action}"     value="edit" />
 	  </h:commandButton>
 		
 		<h:commandButton value="#{msgs.exec}" action="#{locationDetails.submit}" />
